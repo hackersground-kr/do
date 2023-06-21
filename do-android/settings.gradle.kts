@@ -11,6 +11,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://jitpack.io")
+        maven( "https://naver.jfrog.io/artifactory/maven/")
     }
 }
 rootProject.name = "do"

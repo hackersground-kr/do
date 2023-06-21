@@ -39,12 +39,14 @@ android {
 }
 
 dependencies {
-    implementation(projects.app)
+    implementation(projects.domain)
 
     implementation(Libraries.androidLibraries)
     implementation(Libraries.coroutineLibraries)
     implementation(Libraries.roomLibraries)
+    kapt(Libraries.roomCompiler)
     implementation(Libraries.networkLibraries)
+    implementation(Libraries.mapLibraries)
 
     implementation(Libraries.hiltAndroid)
     kapt(Libraries.hiltCompiler)

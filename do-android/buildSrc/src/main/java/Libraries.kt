@@ -39,6 +39,7 @@ object Libraries {
     // map
     private val googleLocation = "com.google.android.gms:play-services-location:${Versions.googleLocation}"
     val googleGms = "com.google.gms:google-services:${Versions.googleGms}"
+    private val naverMap = "com.naver.maps:map-sdk:${Versions.naverMap}"
 
     // coroutine
     private val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
@@ -72,7 +73,6 @@ object Libraries {
 
     val roomLibraries = arrayListOf<String>().apply {
         add(roomRuntime)
-        add(roomCompiler)
     }
 
     val networkLibraries = arrayListOf<String>().apply {
@@ -80,6 +80,11 @@ object Libraries {
         add(gsonConverter)
         add(okhttp)
         add(loggingInterceptor)
+    }
+
+    val mapLibraries = arrayListOf<String>().apply {
+        add(naverMap)
+        add(googleLocation)
     }
 
     val appLibraries = arrayListOf<String>().apply {

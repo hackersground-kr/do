@@ -27,6 +27,7 @@ object Versions {
     const val hilt = "2.44"
     const val googleLocation = "20.0.0"
     const val googleGms = "4.3.14"
+    const val naverMap = "3.16.0"
 
     // test
     const val junit = "4.13.2"

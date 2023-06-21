@@ -33,11 +33,12 @@ android {
         jvmTarget = AppConfig.jvmTarget
     }
     dataBinding {
-        isEnabled = AppConfig.enableDataBinding
+        enable = AppConfig.enableDataBinding
     }
 }
 
 dependencies {
+    implementation(project(":domain"))
 
     implementation(Libraries.androidLibraries)
     testImplementation(Libraries.junit)

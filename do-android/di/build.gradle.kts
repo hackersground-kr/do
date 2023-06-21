@@ -23,6 +23,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":app"))
+
     implementation(Libraries.appLibraries)
     testImplementation(Libraries.junit)
 }

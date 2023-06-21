@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export default class CreatememberDTO {
+export default class CreateMemberDTO {
   @IsString()
   @IsNotEmpty()
   name!: string;
@@ -16,4 +16,8 @@ export default class CreatememberDTO {
   @IsString()
   @IsNotEmpty()
   pdfUrl!: string;
+
+  @IsString()
+  @IsNotEmpty()
+  summary!: string;
 }

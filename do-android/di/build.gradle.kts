@@ -29,6 +29,11 @@ dependencies {
     implementation(projects.app)
 
     implementation(Libraries.appLibraries)
+    
+    implementation(Libraries.networkLibraries)
+
+    implementation(Libraries.roomLibraries)
+    kapt(Libraries.roomCompiler)
 
     implementation(Libraries.hiltAndroid)
     kapt(Libraries.hiltCompiler)

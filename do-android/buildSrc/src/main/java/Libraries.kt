@@ -30,6 +30,7 @@ object Libraries {
     private val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     private val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     private val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    private val gson = "com.google.code.gson:gson:${Versions.gson}"
 
     // hilt
     val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
@@ -80,6 +81,7 @@ object Libraries {
         add(gsonConverter)
         add(okhttp)
         add(loggingInterceptor)
+        add(gson)
     }
 
     val mapLibraries = arrayListOf<String>().apply {

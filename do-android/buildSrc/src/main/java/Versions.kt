@@ -24,6 +24,7 @@ object Versions {
     const val glide = "4.13.0"
     const val retrofit = "2.9.0"
     const val okhttp = "4.9.0"
+    const val gson = "2.10.1"
     const val hilt = "2.44"
     const val googleLocation = "20.0.0"
     const val googleGms = "4.3.14"

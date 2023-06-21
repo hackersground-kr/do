@@ -2,6 +2,7 @@ plugins {
     id(Plugins.application)
     id(Plugins.kotlinAndroid)
     id(Plugins.kapt)
+    id(Plugins.hilt)
 }
 
 @Suppress("UnstableApiUsage")
@@ -38,9 +39,16 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
+    implementation(projects.app)
 
     implementation(Libraries.androidLibraries)
+    implementation(Libraries.coroutineLibraries)
+    implementation(Libraries.roomLibraries)
+    implementation(Libraries.networkLibraries)
+
+    implementation(Libraries.hiltAndroid)
+    kapt(Libraries.hiltCompiler)
+
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.testLibraries)
 }

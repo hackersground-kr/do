@@ -26,6 +26,7 @@ object Versions {
     const val okhttp = "4.9.0"
     const val hilt = "2.44"
     const val googleLocation = "20.0.0"
+    const val googleGms = "4.3.14"
 
     // test
     const val junit = "4.13.2"

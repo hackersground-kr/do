@@ -1,4 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    dependencies {
+        classpath(Libraries.hiltPlugin)
+        classpath(Libraries.navSafeArgs)
+        classpath(Libraries.googleGms)
+    }
+}
+
 plugins {
     id(Plugins.application).version(Versions.android).apply(false)
     id(Plugins.library).version(Versions.android).apply(false)

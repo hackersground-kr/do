@@ -2,6 +2,7 @@ plugins {
     id(Plugins.library)
     id(Plugins.kotlinAndroid)
     id(Plugins.kapt)
+    id(Plugins.hilt)
 }
 
 android {
@@ -23,10 +24,14 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
-    implementation(project(":domain"))
-    implementation(project(":app"))
+    implementation(projects.data)
+    implementation(projects.domain)
+    implementation(projects.app)
 
     implementation(Libraries.appLibraries)
+
+    implementation(Libraries.hiltAndroid)
+    kapt(Libraries.hiltCompiler)
+
     testImplementation(Libraries.junit)
 }

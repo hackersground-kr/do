@@ -2,6 +2,7 @@ plugins {
     id(Plugins.library)
     id(Plugins.kotlinAndroid)
     id(Plugins.kapt)
+    id(Plugins.hilt)
 }
 
 android {
@@ -24,5 +25,10 @@ android {
 
 dependencies {
     implementation(Libraries.appLibraries)
+    implementation(Libraries.coroutineLibraries)
+
+    implementation(Libraries.hiltAndroid)
+    kapt(Libraries.hiltCompiler)
+
     testImplementation(Libraries.junit)
 }

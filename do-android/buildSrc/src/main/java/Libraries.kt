@@ -2,17 +2,13 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 
 object Libraries {
 
-    val kotlinBom = "org.jetbrains.kotlin:kotlin-bom:${Versions.kotlinBom}"
-    private val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModelKtx}"
-
     // ui
     private val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     private val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     private val material = "com.google.android.material:material:${Versions.material}"
     private val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
-
     private val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
-    private val navSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navSafeArgs}"
+    val navSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navSafeArgs}"
     private val nav = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     private val navUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     private val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
@@ -21,12 +17,13 @@ object Libraries {
     private val indicator = "com.tbuonomo:dotsindicator:${Versions.indicator}"
     private val viewPager = "androidx.viewpager2:viewpager2:${Versions.viewPager}"
     private val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
-    private val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    private val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModelKtx}"
+    val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}" // *
 
     // room
     private val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     private val roomKtx = "androidx.room:room-ktx:${Versions.room}"
-    private val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    val roomCompiler = "androidx.room:room-compiler:${Versions.room}" // *
 
     // network
     private val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
@@ -35,12 +32,13 @@ object Libraries {
     private val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 
     // hilt
-    private val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
-    private val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
-    private val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
+    val hiltAndroid = "com.google.dagger:hilt-android:${Versions.hilt}"
+    val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}" // *
+    val hiltPlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt}"
 
     // map
     private val googleLocation = "com.google.android.gms:play-services-location:${Versions.googleLocation}"
+    val googleGms = "com.google.gms:google-services:${Versions.googleGms}"
 
     // coroutine
     private val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
@@ -56,6 +54,32 @@ object Libraries {
         add(appcompat)
         add(material)
         add(constraint)
+        add(lottie)
+        add(nav)
+        add(navUiKtx)
+        add(splashScreen)
+        add(swipeRefreshLayout)
+        add(circleImageView)
+        add(indicator)
+        add(viewPager)
+        add(glide)
+    }
+
+    val coroutineLibraries = arrayListOf<String>().apply {
+        add(coroutineCore)
+        add(coroutineAndroid)
+    }
+
+    val roomLibraries = arrayListOf<String>().apply {
+        add(roomRuntime)
+        add(roomCompiler)
+    }
+
+    val networkLibraries = arrayListOf<String>().apply {
+        add(retrofit)
+        add(gsonConverter)
+        add(okhttp)
+        add(loggingInterceptor)
     }
 
     val appLibraries = arrayListOf<String>().apply {

@@ -22,6 +22,10 @@ object Libraries {
         add(constraint)
     }
 
+    val appLibraries = arrayListOf<String>().apply {
+        add(coreKtx)
+    }
+
     val testLibraries = arrayListOf<String>().apply {
         add(extJunit)
         add(espressoCore)

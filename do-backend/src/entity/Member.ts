@@ -15,7 +15,7 @@ export class Member {
     name: 'x_address',
     nullable: false,
   })
-  xAddress: string;
+  xAddress: number;
 
   @Column({
     name: 'y_address',

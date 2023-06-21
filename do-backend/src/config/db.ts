@@ -7,6 +7,7 @@ export const dbConfig: dbConfigType = {
   dbUsername: process.env.DB_USERNAME,
   dbPassword: process.env.DB_PASSWORD,
   allowLogging: process.env.DB_LOGGING,
+  DB_SYNCHRONIZE: false,
 };
 
 interface dbConfigType {
@@ -16,4 +17,5 @@ interface dbConfigType {
   dbUsername: string;
   dbPassword: string;
   allowLogging: string;
+  DB_SYNCHRONIZE: boolean;
 }

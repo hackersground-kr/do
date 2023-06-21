@@ -11,6 +11,7 @@ object Libraries {
     val navSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navSafeArgs}"
     private val nav = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     private val navUiKtx = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
+    private val navCompose = "androidx.navigation:navigation-compose:2.5.3"
     private val splashScreen = "androidx.core:core-splashscreen:${Versions.splashScreen}"
     private val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.swipeRefreshLayout}"
     private val circleImageView = "de.hdodenhof:circleimageview:${Versions.circleImageView}"
@@ -19,6 +20,7 @@ object Libraries {
     private val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     private val viewModelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.viewModelKtx}"
     val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}" // *
+    private val fragmentKtx = "androidx.fragment:fragment-ktx:1.5.4"
 
     // room
     private val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
@@ -59,12 +61,14 @@ object Libraries {
         add(lottie)
         add(nav)
         add(navUiKtx)
+        add(navCompose)
         add(splashScreen)
         add(swipeRefreshLayout)
         add(circleImageView)
         add(indicator)
         add(viewPager)
         add(glide)
+        add(fragmentKtx)
     }
 
     val coroutineLibraries = arrayListOf<String>().apply {

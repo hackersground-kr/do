@@ -5,14 +5,21 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import kr.hackersground.wsi.data.remote.service.FileService
+import kr.hackersground.wsi.data.remote.service.MemberService
 import retrofit2.Retrofit
 
 @Module
 @InstallIn(SingletonComponent::class)
 class RemoteModule {
 
-    /*@Singleton
+    @Singleton
     @Provides
-    fun provideMealRemote(retrofit: Retrofit): MealRemote =
-        MealRemote(retrofit.create(MealApi::class.java))*/
+    fun provideMemberRemote(retrofit: Retrofit): MemberService =
+        retrofit.create(MemberService::class.java)
+
+    @Singleton
+    @Provides
+    fun provideFileRemote(retrofit: Retrofit): FileService =
+        retrofit.create(FileService::class.java)
 }

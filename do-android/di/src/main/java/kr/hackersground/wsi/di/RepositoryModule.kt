@@ -5,12 +5,20 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+import kr.hackersground.wsi.data.repository.FileRepositoryImpl
+import kr.hackersground.wsi.data.repository.MemberRepositoryImpl
+import kr.hackersground.wsi.domain.repository.FileRepository
+import kr.hackersground.wsi.domain.repository.MemberRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
 class RepositoryModule {
 
-//    @Singleton
-//    @Provides
-//    fun provideMealRepository(mealRepositoryImpl: MealRepositoryImpl): MealRepository = mealRepositoryImpl
+    @Singleton
+    @Provides
+    fun provideMemberRepository(memberRepositoryImpl: MemberRepositoryImpl): MemberRepository = memberRepositoryImpl
+
+    @Singleton
+    @Provides
+    fun provideFileRepository(fileRepositoryImpl: FileRepositoryImpl): FileRepository = fileRepositoryImpl
 }

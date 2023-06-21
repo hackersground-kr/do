@@ -4,50 +4,27 @@ object Libraries {
 
     val kotlinBom = "org.jetbrains.kotlin:kotlin-bom:${Versions.kotlinBom}"
 
-    // android
+    // ui
     private val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-    private val lifecycleRunTimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycleRunTimeKtx}"
-
-    // compose
-    private val activityCompose = "androidx.activity:activity-compose:${Versions.compose}"
-    private val composeUi = "androidx.compose.ui:ui"
-    private val composeUiGraphics = "androidx.compose.ui:ui-graphics"
-    private val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview"
-    private val composeMaterial3 = "androidx.compose.material3:material3"
-    val composeBom = "androidx.compose:compose-bom:${Versions.composeBom}"
+    private val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
+    private val material = "com.google.android.material:material:${Versions.material}"
+    private val constraint = "androidx.constraintlayout:constraintlayout:${Versions.constraint}"
 
     // test
     val junit = "junit:junit:${Versions.junit}"
     private val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
     private val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
-    private val composeUiTestJunit4 = "androidx.compose.ui:ui-test-junit4"
-
-    // debug
-    private val composeUiTooling = "androidx.compose.ui:ui-tooling"
-    private val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest"
 
     val androidLibraries = arrayListOf<String>().apply {
         add(coreKtx)
-        add(lifecycleRunTimeKtx)
-    }
-
-    val composeLibraries = arrayListOf<String>().apply {
-        add(activityCompose)
-        add(composeUi)
-        add(composeUiGraphics)
-        add(composeUiToolingPreview)
-        add(composeMaterial3)
+        add(appcompat)
+        add(material)
+        add(constraint)
     }
 
     val testLibraries = arrayListOf<String>().apply {
         add(extJunit)
         add(espressoCore)
-        add(composeUiTestJunit4)
-    }
-
-    val debugLibraries = arrayListOf<String>().apply {
-        add(composeUiTooling)
-        add(composeUiTestManifest)
     }
 }
 

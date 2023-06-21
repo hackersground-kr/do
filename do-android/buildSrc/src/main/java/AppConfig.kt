@@ -22,7 +22,7 @@ object AppConfig {
 
     @JvmField val javaVersion = JavaVersion.VERSION_1_8
     const val jvmTarget = "1.8"
-    const val compose = true
     const val kotlinCompilerExtensionVersion = "1.3.2"
     const val packagingOption = "/META-INF/{AL2.0,LGPL2.1}"
+    const val enableDataBinding = true
 }

@@ -4,7 +4,9 @@ object Versions {
 
     // android
     const val coreKtx = "1.8.0"
-    const val lifecycleRunTimeKtx = "2.6.1"
+    const val appcompat = "1.6.1"
+    const val material = "1.5.0"
+    const val constraint = "2.1.4"
 
     // compose
     const val compose = "1.7.2"

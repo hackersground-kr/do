@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "do"
-include ':app'
-include ':di'
-include ':domain'
+include(":app")
+include(":di")
+include(":domain")

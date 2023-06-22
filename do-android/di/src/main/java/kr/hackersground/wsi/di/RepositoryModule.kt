@@ -1,5 +1,6 @@
 package kr.hackersground.wsi.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,13 +13,17 @@ import kr.hackersground.wsi.domain.repository.MemberRepository
 
 @Module
 @InstallIn(SingletonComponent::class)
-class RepositoryModule {
+abstract class RepositoryModule {
 
     @Singleton
-    @Provides
-    fun provideMemberRepository(memberRepositoryImpl: MemberRepositoryImpl): MemberRepository = memberRepositoryImpl
+    @Binds
+    abstract fun providesMemberRepository(
+        memberRepositoryImpl: MemberRepositoryImpl
+    ): MemberRepository
 
     @Singleton
-    @Provides
-    fun provideFileRepository(fileRepositoryImpl: FileRepositoryImpl): FileRepository = fileRepositoryImpl
+    @Binds
+    abstract fun providesFileRepository(
+        fileRepositoryImpl: FileRepositoryImpl
+    ): FileRepository
 }

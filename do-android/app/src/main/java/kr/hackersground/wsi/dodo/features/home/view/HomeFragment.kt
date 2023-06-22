@@ -1,5 +1,6 @@
 package kr.hackersground.wsi.dodo.features.home.view
 
+import android.os.Bundle
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
@@ -13,7 +14,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override val viewModel: HomeViewModel by viewModels()
     override val hasBottomNavigation: Boolean = true
 
-    override fun start() {
-        
+    override fun start(savedInstanceState: Bundle?) {
+
     }
 }

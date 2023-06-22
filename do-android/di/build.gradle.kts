@@ -26,7 +26,7 @@ android {
 dependencies {
     implementation(projects.data)
     implementation(projects.domain)
-    implementation(projects.app)
+//    implementation(projects.app)
 
     implementation(Libraries.appLibraries)
     

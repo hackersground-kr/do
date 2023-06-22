@@ -5,7 +5,7 @@ import kr.hackersground.wsi.domain.model.Member
 import kr.hackersground.wsi.domain.repository.MemberRepository
 
 class GetAllMembersUseCase @Inject constructor(
-    private val memberRepository: MemberRepository,
+    val memberRepository: MemberRepository,
 ) {
 
     suspend operator fun invoke(): Result<List<Member>> = kotlin.runCatching {

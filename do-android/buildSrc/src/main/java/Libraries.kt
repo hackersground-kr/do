@@ -43,6 +43,7 @@ object Libraries {
     private val googleLocation = "com.google.android.gms:play-services-location:${Versions.googleLocation}"
     val googleGms = "com.google.gms:google-services:${Versions.googleGms}"
     private val naverMap = "com.naver.maps:map-sdk:${Versions.naverMap}"
+    private val clustering = "io.github.ParkSangGwon:tedclustering-naver:1.0.2"
 
     // coroutine
     private val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
@@ -91,6 +92,7 @@ object Libraries {
     val mapLibraries = arrayListOf<String>().apply {
         add(naverMap)
         add(googleLocation)
+        add(clustering)
     }
 
     val appLibraries = arrayListOf<String>().apply {

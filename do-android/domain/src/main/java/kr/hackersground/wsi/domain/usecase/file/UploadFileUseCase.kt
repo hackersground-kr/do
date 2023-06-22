@@ -5,7 +5,7 @@ import javax.inject.Inject
 import kr.hackersground.wsi.domain.repository.FileRepository
 
 class UploadFileUseCase @Inject constructor(
-    private val fileRepository: FileRepository,
+    val fileRepository: FileRepository,
 ) {
 
     suspend operator fun invoke(pdfFile: File) = kotlin.runCatching {

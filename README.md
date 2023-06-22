@@ -68,7 +68,7 @@
 > 6. main-ododo.yml 파일에 backend_realese.yml 파일의 내용을 복사 붙여넣기한다.
 > 7. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
 
-> ### 안드
+### 안드
 > 1. AndroidStudio의 상단 툴바에서 Build -> Build Bundle(s) / APK(s) -> Build APK(s)를 클릭합니다.
 
 <img width="1440" alt="스크린샷 2023-06-22 오후 7 44 45" src="https://github.com/hackersground-kr/do/assets/80940200/cf8ceccc-794b-49bd-bad5-be70c67db0b7">

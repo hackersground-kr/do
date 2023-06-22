@@ -12,6 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./do-backend
 
     steps:
       - uses: actions/checkout@v2
@@ -22,7 +25,6 @@ jobs:
           node-version: "18.x"
 
       - name: Generate Environment Variables File for Production
-        working-directory: ./do-backend
         run: |
           echo "PORT=$PORT" >> .env
           echo "APP_HOST=$APP_HOST" >> .env
@@ -49,14 +51,12 @@ jobs:
           DB_ENTITIES: ${{ secrets.DB_ENTITIES }}
 
       - name: npm install, build
-        working-directory: ./do-backend
         run: |
           npm install --legacy-peer-deps
           npm run build --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
-        working-directory: ./do-backend
         with:
           name: node-app
           path: .

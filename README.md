@@ -147,7 +147,7 @@ export const config = {
 위 과정을 수행하면 github action 작업 3개 중 하나(main-dddo.yml)가 완료될 것이다.
 
 12. Azure Portal의 dddo App Service에 들어가서  `개발 도구` -> `SSH`에 접속하여, `cd site`, `cd wwwroot`, `rm -rf node_modules`를 차례로 실행하고 기다린 후, `npm i` 커맨드를 실행한다.
-13. Github에서 해당 레포지토리의 성공한 github action 작업에 들어가서, `Re-run all jobs` 버튼을 눌러 다시 deploy한다.
+13. Github에서 해당 레포지토리의 성공한 github action 작업에 들어가서, `Re-run all jobs` 버튼을 눌러 다시 deploy한다.
 
 위 작업을 완료하면 https://dddo.azurewebsites.net/ 로 서버가 띄워진다.
 

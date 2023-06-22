@@ -20,7 +20,7 @@ jobs:
           uses: actions/upload-artifact@v1
           with:
             name: app
-            path: do-android/app/build/outputs/apk/debug
+            path: do-android/app/build/outputs/apk/debug/app.apk
             
   build:
     runs-on: ubuntu-latest
@@ -37,6 +37,6 @@ jobs:
         appName: mooooong/do
         token: ${{secrets.APP_CENTER_TOKEN}}
         group: Collaborators
-        file: do/do-android/app/build/outputs/apk/debug/app.apk
+        file: do-android/app/build/outputs/apk/debug/app.apk
         notifyTesters: true
         debug: false

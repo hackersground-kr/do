@@ -64,7 +64,8 @@
 > 7. `"backend_realose.yml"` 파일에서 `"Deploy to Azure Web App"`단계의 `"publish-profile"`의 값에 붙여넣기한다.
 > 8. `"main-ododo.yml"` 파일에 `"backend_realese.yml"` 파일의 내용의 전체를 복사 붙여넣기한다.
 > 9. `"main-ododo.yml"` 파일에 `"Deploy to Azure Web App"` 단계의 `"app-name"`을 `"ododo"`으로 바꾼다.
-> 10. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
+> 10. `"backend_realese.yml"` 파일을 삭제한다.
+> 11. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
 
 # Android 배포 설명서
 ## 사전 준비 사항

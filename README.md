@@ -36,18 +36,6 @@
 > 5. 다음 만들기를 클릭하여 데이터베이스를 만든다.
 > 6. 데이터베이스에 접속하여 `create database do` 명령을 이용해 do 스키마를 생성한다.
 
-### 환경변수
-> do-backend/config/config.ts에 해당 내용을 넣어주세요.
-
-      export const config = {
-        port: 8080,
-        DBHost: 'ddoo.mysql.database.azure.com',
-        DBPort: 3306,
-        DBUsername: 'do',
-        DBPassword: '1q2w3e4r5t',
-        DBDatabase: 'do',
-      };
-
 ## 시작하기
 
  ### 서버
@@ -61,7 +49,18 @@
 > 8. `"main-ododo.yml"` 파일에 `"backend_realese.yml"` 파일의 내용의 전체를 복사 붙여넣기한다.
 > 9. `"main-ododo.yml"` 파일에 `"Deploy to Azure Web App"` 단계의 `"app-name"`을 `"ododo"`으로 바꾼다.
 > 10. `"backend_realese.yml"` 파일을 삭제한다.
-> 11. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
+> 11. do-backend/config/config.ts에 해당 내용을 넣어주세요.
+
+      export const config = {
+        port: 8080,
+        DBHost: 'ddoo.mysql.database.azure.com',
+        DBPort: 3306,
+        DBUsername: 'do',
+        DBPassword: '1q2w3e4r5t',
+        DBDatabase: 'do',
+      };
+      
+> 12. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
 
 # Android 배포 설명서
 ## 사전 준비 사항

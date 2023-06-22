@@ -18,7 +18,7 @@ export class MemberService {
       xAddress: createMemberDTO.xAddress,
       yAddress: createMemberDTO.yAddress,
       pdfUrl: createMemberDTO.pdfUrl,
-      summary: createMemberDTO.summary,
+      summary: '',
     });
   }
 }

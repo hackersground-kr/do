@@ -1,6 +1,6 @@
 import { Bind, Controller, Get, Param, Post, Response, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { multerDiskOptions } from 'src/config/multer/multer.config';
+import { multerDiskOptions } from '../config/multer/multer.config';
 import { UploadService } from './upload.service';
 import { Response as ResponseE } from 'express';
 import { ConfigService } from '@nestjs/config';

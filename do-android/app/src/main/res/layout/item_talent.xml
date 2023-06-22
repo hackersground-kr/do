@@ -6,7 +6,7 @@
     <data>
        <variable
         name="user"
-        type="kr.hackersground.wsi.domain.model.Talent" />
+        type="kr.hackersground.wsi.domain.model.Member" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,12 +36,13 @@
 
         <TextView
             android:id="@+id/tv_description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textColor="@color/unselect"
-            android:text="@{user.descriptor}"
+            android:text="자동으로 만들어주는 간략한 설명입니다. 이 설명은 4줄까지만 허용됩니다."
             android:maxLines="4"
+            android:textSize="12dp"
             app:layout_constraintStart_toStartOf="@id/im_profile"
             app:layout_constraintEnd_toEndOf="@id/im_profile"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />

@@ -39,13 +39,14 @@
 ## 시작하기
 
 1. Microsoft Azure에서 App Services 만들기를 누르고, `웹 앱`을 선택한다.
-2. 인스턴스 이름은 `"dddo"`를 입력하고 런타임 스택을 `"Node 18 LTS"`로 설정한다. `"Linux"` 운영체제를 사용하고 `"Korea Center"` 지역을 선택하고 배포로 넘어간다.
+2. 인스턴스 이름은 `dddo`를 입력하고 런타임 스택을 `Node 18 LTS`로 설정한다. `Linux` 운영체제를 사용하고 `Korea Center` 지역을 선택하고 배포로 넘어간다.
 
 <img width="1624" alt="image" src="https://github.com/hackersground-kr/do/assets/80818534/efe640d1-30c3-4f49-8711-b4e5cde38210">
  
-4. Github Action 설정을 사용으로 바꾸고 세부 정보의 조직, 리포지토리에는 `"do"`, 분기에는 `"main"`을 입력한다.
+4. Github Action 설정을 사용으로 바꾸고 세부 정보의 조직, 리포지토리에는 `do`, 분기에는 `main`을 입력한다.
 5. 그리고 만들기를 눌러 App Service를 생성한다. (참고로, App Service를 생성 후 첫 github action을 실행할 때에는 배포에 실패한다.)
 6. 새로 생성된 `main-dddo.yml` 파일에서 `Deploy to Azure Web App` 스텝의 with 옵션의 `publish-profile`의 값을 복사한다.
+7. `main-dddo.yml` 파일의 내용을 아래 yml 파일의 전체 내용으로 대체한다. (덮어쓰기)
 
 ```yml
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
@@ -107,15 +108,14 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "ddoo"
+          app-name: 
           slot-name: "Production"
-          publish-profile: 
+          publish-profile: 
           package: .
 ```
 
-7. `main-dddo.yml` 파일의 내용을 위 yml 파일의 전체 내용으로 대체한다. (덮어쓰기)
-8. 위 6번에서 복사한 `publish-profile`의 값을 새로운 내용으로 대체한 `main-dddo.yml`의 `Deploy to Azure Web App` 스텝의 `publish-profile: ` 값에 추가해준다.
-9. `main-dddo.yml` 파일에 `Deploy to Azure Web App` 스텝의 with 옵션의 `app-name`을 `"dddo"`으로 바꾼다.
+8. 위 6번에서 복사한 `publish-profile`의 값을 새로운 내용으로 대체한 `main-dddo.yml`의 `Deploy to Azure Web App` 스텝의 `publish-profile: ` 뒤에 추가해준다. (값을 할당)
+9. `main-dddo.yml` 파일에 `Deploy to Azure Web App` 스텝의 with 옵션의 `app-name: ` 뒤에 `dddo`를 추가해준다. (값을 할당)
 10. do-backend/config/config.ts을 해당 내용으로 대체한다.
 
 ```typescript

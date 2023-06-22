@@ -113,6 +113,7 @@
             android:text="스카우트 제의받기"
             android:textColor="@color/white"
             android:layout_marginBottom="20dp"
+            android:onClick="@{() -> vm.onClickMap()}"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

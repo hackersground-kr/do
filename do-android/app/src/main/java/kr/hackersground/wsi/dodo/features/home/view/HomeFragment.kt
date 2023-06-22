@@ -52,11 +52,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             }
 
             binding.tvRecommendedTalent.text = "지금 지방에는 "+ members.size +"명의 인재가 있습니다!"
-            Log.d("HomeFragment", members.toString())
         }
     }
 
     private fun handleEvent(event: HomeViewModel.Event) = when (event) {
-        is HomeViewModel.Event.OnClickMap -> (activity as? MainActivity)?.mainToMap()
+        is HomeViewModel.Event.OnClickMap -> findNavController().navigate(R.id.action_main_home_to_writeFragment)
     }
 }

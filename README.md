@@ -27,8 +27,41 @@
 
 ### 사전 준비 사항
 
-> **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위해 사전에 필요한 준비 사항들을 적어주세요.**
+> ### 데이터베이스
+> 1. Azure Database for MySQL 서버를 선택한다.
+> 2. 유연한 서비스 방법을 선택한다.
+> 3. 서버이름을 ddoo로 입력하고 지역을 Korea Center로 선택한뒤 mysql 버젼 8.0을 선택한다. 인증방법은 MySQL 인증만을 선택한다. 관리자 사용자 이름을 do로, 암호는 b1nd0108!로 설정한다.
+> 4. 다음 네트워킹으로 넘어가서 방화벽 규칙을 모든 ip를 허용으로 선택한다.
+> 5. 다음 만들기를 클릭하여 데이터베이스를 만든다.
+> 6. 그리고 해당 데이터베이스에 들어가 do 스키마를 생성한다.
+>
+> ### 환경변수
+> 1. Github Repository Setting에서 Secrets and variabls의 Actions를 들어가서 아래 secret과 값을 넣어준다.
+
+      # App
+      PORT=8080
+      APP_HOST=http://localhost
+      
+      # DB
+      DB_CONNECTION=mysql
+      DB_HOST=ddoo.mysql.database.azure.com
+      DB_PORT=3306
+      DB_USERNAME=do
+      DB_PASSWORD=b1nd0108!
+      DB_DATABASE=do
+      DB_SYNCHRONIZE=false
+      DB_LOGGING=TRUE
+      DB_ENTITIES=src/api/models/**/*.ts,src/api/models/**/*.js
+      DB_MIGRATIONS=src/database/migrations/*.ts,src/database/migrations/*.js
 
 ## 시작하기
 
-> **여러분의 제품/서비스를 Microsoft 애저 클라우드에 배포하기 위한 절차를 구체적으로 나열해 주세요.**
+> ### 서버
+> 1. App Services 선택한다.
+> 2. 인스턴스 이름은 ododo를 입력하고 런타임 스택을 Node 18 LTS로 설정한다. Linux 운영체제를 사용하고 Korea Center 지역을 선택하고 배포로 넘어간다.
+> 3. Github Action 설정을 사용으로 바꾸고 세부 정보의 조직, 리포지토리 (do), 분기(main)을 입력한다.
+> 4. 그리고 만들기를 눌러 App Service를 생성한다.
+> 5. main-ododo.yml 파일에 backend_realese.yml 파일의 내용을 복사 붙여넣기한다.
+> 6. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
+
+> ### 안드

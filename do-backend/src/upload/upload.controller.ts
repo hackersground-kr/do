@@ -3,11 +3,10 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { multerDiskOptions } from '../config/multer/multer.config';
 import { UploadService } from './upload.service';
 import { Response as ResponseE } from 'express';
-import { ConfigService } from '@nestjs/config';
 
 @Controller('/files')
 export class UploadController {
-  constructor(private uploadService: UploadService, private configService: ConfigService) {}
+  constructor(private uploadService: UploadService) {}
 
   @Post()
   @UseInterceptors(FileInterceptor('file', multerDiskOptions))
@@ -16,7 +15,7 @@ export class UploadController {
     return {
       status: 200,
       message: '파일 등록 성공',
-      data: `http://localhost:${this.configService.get<string>('PORT')}/files/${file.filename}`,
+      data: `http://localhost:8080/files/${file.filename}`,
     };
   }
 

@@ -12,21 +12,27 @@
 ## 제품/서비스 소개
 
 <!-- 아래 링크는 지우지 마세요 -->
+
 [제품/서비스 소개 보기](TOPIC.md)
+
 <!-- 위 링크는 지우지 마세요 -->
 
 ## 오픈 소스 라이센스
 
 <!-- 아래 링크는 지우지 마세요 -->
+
 [오픈소스 라이센스 보기](./LICENSE)
+
 <!-- 위 링크는 지우지 마세요 -->
 
 # 서버 배포 설명서
+
 ## 설치 방법
 
 > **아래 제공하는 설치 방법을 통해 심사위원단이 여러분의 제품/서비스를 실제 Microsoft 애저 클라우드에 배포하고 설치할 수 있어야 합니다. 만약 아래 설치 방법대로 따라해서 배포 및 설치가 되지 않을 경우 본선에 진출할 수 없습니다.**
 
 ### 사전 준비 사항
+
 - **Microsoft Azure** Account
 - `do` repository code (fork)
 - mysql 8.0 설치
@@ -34,6 +40,7 @@
 ## 시작하기
 
 ### 데이터베이스 구축
+
 > 1. Azure Database for MySQL 서버를 선택한다.
 > 2. 유연한 서비스 방법을 선택한다.
 > 3. 서버이름을 `ddoo`로 입력하고 지역을 `Korea Center`로 선택한뒤, mysql 버젼 `8.0`을 선택한다. 인증방법은 MySQL 인증만을 선택한다. 관리자 사용자 이름을 `do`로, 암호는 `1q2w3e4r5t!`로 설정한다.
@@ -42,6 +49,7 @@
 > 6. 데이터베이스에 접속(터미널에서 `mysql -u do -h ddoo.mysql.database.azure.com -P 3306 -p` 명령어 실행 및 패스워드 `1q2w3e4r5t!` 작성)하여 `create database do;` 명령을 이용해 do 스키마를 생성한다.
 
 ### App Service 배포
+
 1. Microsoft Azure에서 App Services 만들기를 누르고, `웹 앱`을 선택한다.
 2. 인스턴스 이름은 `dddo`를 입력하고 런타임 스택을 `Node 18 LTS`로 설정한다. `Linux` 운영체제를 사용하고 `Korea Center` 지역을 선택하고 배포로 넘어간다.
 
@@ -112,9 +120,9 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 
+          app-name:
           slot-name: "Production"
-          publish-profile: 
+          publish-profile:
           package: .
 ```
 
@@ -124,19 +132,29 @@ jobs:
 
 ```typescript
 export const config = {
+<<<<<<< HEAD
  port: 8080,
  DBHost: 'ddoo.mysql.database.azure.com',
  DBPort: 3306,
  DBUsername: 'do',
  DBPassword: '1q2w3e4r5t!',
  DBDatabase: 'do',
+=======
+  port: 8080,
+  baseUrl: "dddo.azurewebsites.net",
+  DBHost: "ddoo.mysql.database.azure.com",
+  DBPort: 3306,
+  DBUsername: "do",
+  DBPassword: "1q2w3e4r5t",
+  DBDatabase: "do",
+>>>>>>> db478a4 (Update file upload)
 };
 ```
-      
+
 11. 이후 `git add .`, `git commit -m "Update"`, `git push origin main`을 실행하여 github action이 동작하도록 한다.
 
-
 # Android 배포 설명서
+
 ## 사전 준비 사항
 
 - **Github** Account
@@ -148,7 +166,7 @@ export const config = {
 Appcenter에 로그인할 경우의 아래의 화면이 보입니다.
 
 - `Add new` or `Add new app` 버튼을 클릭합니다.
-<img width="1552" alt="스크린샷 2023-06-22 오후 9 56 33" src="https://github.com/hackersground-kr/do/assets/80940200/f1c7c462-233f-4d71-8529-84c879e24340">
+  <img width="1552" alt="스크린샷 2023-06-22 오후 9 56 33" src="https://github.com/hackersground-kr/do/assets/80940200/f1c7c462-233f-4d71-8529-84c879e24340">
 
 화면 우측의 창에서 아래 사진과 같이 입력 및 선택합니다.
 <img width="1552" alt="스크린샷 2023-06-22 오후 10 03 11" src="https://github.com/hackersground-kr/do/assets/80940200/7695c19f-80f0-4152-8e36-f2a1be91811c">
@@ -165,81 +183,78 @@ Appcenter에 로그인할 경우의 아래의 화면이 보입니다.
 <img width="1552" alt="스크린샷 2023-06-22 오후 10 06 42" src="https://github.com/hackersground-kr/do/assets/80940200/462f2a13-1b5d-42a7-8428-b45379bc49f5">
 
 - 페이지를 스크롤하여 `Integrate app secret` 을 찾습니다.
-    
-    
+
     <img width="720" alt="new1" src="https://github.com/hackersground-kr/do/assets/80940200/7e10710a-8530-4827-b715-bd3ca3c1713b">
 
-    
-    아래 `secret` 문자열을 복사하여 fork한 코드에 넣어줍니다.
-    
-    ```
-    do/do-android/app/src/main/java/kr/hackersground/wsi/dodo/features/main/view/MainActivity.kt
-    ```
-    
-    위 경로의 `MainActivity.kt` 파일로 접속합니다.
-    
-    ```kotlin
-    @AndroidEntryPoint
-    class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
-    
-        override val viewModel: MainViewModel by viewModels()
-        private lateinit var navController: NavController
-    
-        override fun start() {
-            AppCenter.start(
-                application,
-                "e59cdf02-8630-4ebc-8201-4fbb6789e5ba", // <- 변경해 주세요!!
-                Analytics::class.java,
-                Crashes::class.java
-            )
-            setNavigation()
-        }
-    
-        private fun setNavigation() {
-            val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment
-            navController = navHostFragment.navController
-            binding.bnvMain.setupWithNavController(navController)
-        }
-    
-        fun setNavVisible(demand: Boolean) {
-            binding.bnvMain.visibility = if (demand) View.VISIBLE else View.GONE
-        }
-    }
-    ```
-    
-    위 문자열을 복사한 `secret`으로 변경합니다.
-    
-    Github 저장소에 저장(push)합니다.
-    
-    ## 시작하기
-    
-    ### 1. App API Tokens 발급 받기
-    
-    Appcenter에서 `Setting`으로 접속합니다.
-    
+  아래 `secret` 문자열을 복사하여 fork한 코드에 넣어줍니다.
+
+  ```
+  do/do-android/app/src/main/java/kr/hackersground/wsi/dodo/features/main/view/MainActivity.kt
+  ```
+
+  위 경로의 `MainActivity.kt` 파일로 접속합니다.
+
+  ```kotlin
+  @AndroidEntryPoint
+  class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
+
+      override val viewModel: MainViewModel by viewModels()
+      private lateinit var navController: NavController
+
+      override fun start() {
+          AppCenter.start(
+              application,
+              "e59cdf02-8630-4ebc-8201-4fbb6789e5ba", // <- 변경해 주세요!!
+              Analytics::class.java,
+              Crashes::class.java
+          )
+          setNavigation()
+      }
+
+      private fun setNavigation() {
+          val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment
+          navController = navHostFragment.navController
+          binding.bnvMain.setupWithNavController(navController)
+      }
+
+      fun setNavVisible(demand: Boolean) {
+          binding.bnvMain.visibility = if (demand) View.VISIBLE else View.GONE
+      }
+  }
+  ```
+
+  위 문자열을 복사한 `secret`으로 변경합니다.
+
+  Github 저장소에 저장(push)합니다.
+
+  ## 시작하기
+
+  ### 1. App API Tokens 발급 받기
+
+  Appcenter에서 `Setting`으로 접속합니다.
+
     <img width="1552" alt="new2" src="https://github.com/hackersground-kr/do/assets/80940200/0203525d-98ba-4e53-bacb-5a15b1baa0ed">
 
-    아래로 스크롤하여 `App API Tokens`를 클릭합니다.
+  아래로 스크롤하여 `App API Tokens`를 클릭합니다.
 
     <img width="1552" alt="new3" src="https://github.com/hackersground-kr/do/assets/80940200/5ac3223b-3398-417e-b8ff-0e780336c2b9">
 
-    `New API Token` 버튼을 클릭한 후 정보를 입력합니다.
-    
+  `New API Token` 버튼을 클릭한 후 정보를 입력합니다.
+
     <img width="1552" alt="new4" src="https://github.com/hackersground-kr/do/assets/80940200/36973324-dfe7-4a00-a723-6118672ef068">
 
-    
-    위 사진과 같이 설명과 권한을 입력 후 `Add new API token`을 클릭합니다.
-    
+  위 사진과 같이 설명과 권한을 입력 후 `Add new API token`을 클릭합니다.
+
     <img width="1552" alt="new5" src="https://github.com/hackersground-kr/do/assets/80940200/cc7f84b1-15b4-4ed8-b9e7-0c1ab263567d">
 
-    `API token`을 복사합니다.
-    
-    ### 2. sercret.APP_CENTER_TOKEN 설정하기
-    
-    Github에서 fork한 레포지토리로 접속합니다.
-    
-    **Setting** → **Secrets and Variables → Actions 로 들어갑니다.**
-    
+  `API token`을 복사합니다.
+
+  ### 2. sercret.APP_CENTER_TOKEN 설정하기
+
+  Github에서 fork한 레포지토리로 접속합니다.
+
+  **Setting** → **Secrets and Variables → Actions 로 들어갑니다.**
+
     <img width="1552" alt="new6" src="https://github.com/hackersground-kr/do/assets/80940200/4434de7d-ae4b-46d2-80a5-89ec53679b82">
     
     우측 `New repository secret` 버튼을 클릭합니다.

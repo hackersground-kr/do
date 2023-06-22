@@ -61,6 +61,7 @@ jobs:
           name: node-app
           path: node-app.zip
       - run: |
+          cd ./do-backend
           zip -r node-app.zip .
 
   deploy:

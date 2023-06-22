@@ -144,6 +144,8 @@ export const config = {
 
 11. 이후 `git add .`, `git commit -m "Update"`, `git push origin main`을 실행하여 github action이 동작하도록 한다.
 
+위 과정을 수행하면 https://dddo.azurewebsites.net/ 로 서버가 띄워진다.
+
 # Android 배포 설명서
 
 ## 사전 준비 사항

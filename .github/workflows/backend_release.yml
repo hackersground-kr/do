@@ -85,5 +85,5 @@ jobs:
         with:
           app-name: "humanbackend"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_081F540FA71445C49EBBC06921DFFAC5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_364508189C5A4E8B949848310FAD6C68 }}
           package: .

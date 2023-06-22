@@ -36,6 +36,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         binding.bnvMain.setupWithNavController(navController)
     }
 
+    fun mainToMap() {
+        binding.bnvMain.selectedItemId = R.id.main_map
+    }
+
     fun setNavVisible(demand: Boolean) {
         binding.bnvMain.visibility = if (demand) View.VISIBLE else View.GONE
     }

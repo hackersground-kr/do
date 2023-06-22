@@ -13,6 +13,7 @@ import kr.hackersground.wsi.dodo.databinding.FragmentHomeBinding
 import kr.hackersground.wsi.dodo.features.adapter.MemberAdapter
 import kr.hackersground.wsi.dodo.features.home.data.MemberData
 import kr.hackersground.wsi.dodo.features.home.vm.HomeViewModel
+import kr.hackersground.wsi.dodo.features.main.view.MainActivity
 import kr.hackersground.wsi.dodo.util.repeatOnStarted
 import kr.hackersground.wsi.domain.model.Member
 
@@ -53,6 +54,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     }
 
     private fun handleEvent(event: HomeViewModel.Event) = when (event) {
-        is HomeViewModel.Event.OnClickMap -> findNavController().navigate(R.id.action_main_home_to_main_map2)
+        is HomeViewModel.Event.OnClickMap -> (activity as? MainActivity)?.mainToMap()
     }
 }

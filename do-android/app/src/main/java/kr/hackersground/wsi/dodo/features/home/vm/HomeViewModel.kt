@@ -1,6 +1,5 @@
 package kr.hackersground.wsi.dodo.features.home.vm
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +10,6 @@ import kr.hackersground.wsi.dodo.features.home.data.MemberData
 import kr.hackersground.wsi.dodo.features.home.state.GetAllMembersState
 import kr.hackersground.wsi.dodo.util.MutableEventFlow
 import kr.hackersground.wsi.dodo.util.asEventFlow
-import kr.hackersground.wsi.domain.model.Member
 import kr.hackersground.wsi.domain.usecase.member.GetAllMembersUseCase
 import javax.inject.Inject
 

@@ -41,7 +41,7 @@ class NetworkModule {
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("http://192.168.225.24:8000/")
+            .baseUrl("https://dddo.azurewebsites.net:8080/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
     }

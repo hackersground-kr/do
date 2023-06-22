@@ -14,7 +14,8 @@ jobs:
           with:
             java-version: 17
         - name: Build debug APK
-          run: bash ./do-android/gradlew assembleDebug --stacktrace
+          run: bash ./gradlew assembleDebug --stacktrace
+          working-directory: ./do-android
         - name: Upload APK
           uses: actions/upload-artifact@v1
           with:

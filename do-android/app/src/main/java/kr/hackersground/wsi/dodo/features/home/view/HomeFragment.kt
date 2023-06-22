@@ -1,48 +1,61 @@
 package kr.hackersground.wsi.dodo.features.home.view
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
 import kr.hackersground.wsi.dodo.databinding.FragmentHomeBinding
-import kr.hackersground.wsi.dodo.features.adapter.TalentAdapter
+import kr.hackersground.wsi.dodo.features.home.adapter.MemberAdapter
+import kr.hackersground.wsi.dodo.features.home.data.MemberData
 import kr.hackersground.wsi.dodo.features.home.vm.HomeViewModel
+import kr.hackersground.wsi.dodo.features.main.view.MainActivity
 import kr.hackersground.wsi.dodo.util.repeatOnStarted
-import kr.hackersground.wsi.domain.model.Talent
+import kr.hackersground.wsi.domain.model.Member
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
 
     override val viewModel: HomeViewModel by viewModels()
     override val hasBottomNavigation: Boolean = true
-    private lateinit var talentAdapter: TalentAdapter
-    private var talentList: List<Talent> = emptyList()
-    private var recommendedTalentList: List<Talent> = emptyList()
+    private lateinit var memberAdapter: MemberAdapter
+    private var members: List<MemberData> = emptyList()
 
     override fun start(savedInstanceState: Bundle?) {
-        talentAdapter = TalentAdapter()
-        binding.rvTalent.adapter = talentAdapter
-        binding.rvRecommendedTalent.adapter = talentAdapter
-        ChangeTalentRecycleView()
-        binding.tvNearTalent.text = "지금 지방에는 "+ talentList.size +"명의 인재가 있습니다!"
+        memberAdapter = MemberAdapter { member ->
+            val action = HomeFragmentDirections.actionMainHomeToProfileFragment(member)
+            findNavController().navigate(action)
+        }
+        viewModel.getAllMember()
+
+        binding.rvTalent.adapter = memberAdapter
+        binding.rvRecommendedTalent.adapter = memberAdapter
+
+        collectGetAllMembersState()
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
     }
 
-    private fun ChangeTalentRecycleView() {
-        for (i: Int in 1..10) {
-            talentList += Talent(1,"test","des",123,123,"123")
+    private fun collectGetAllMembersState() = lifecycleScope.launchWhenStarted {
+        viewModel.getAllMembersState.collect { state ->
+            if (state.members.isNotEmpty()) {
+                members = state.members
+                memberAdapter.submitList(members.map {MemberData(it.name, it.latitude, it.longitude, it.pdfUrl) })
+            }
+            if (state.error != null) {
+                Toast.makeText(requireContext(), state.error.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+            binding.tvRecommendedTalent.text = "지금 지방에는 "+ members.size +"명의 인재가 있습니다!"
         }
-        for (i: Int in 1..10) {
-            recommendedTalentList += Talent(1,"test","des",123,123,"123")
-        }
-        talentAdapter.submitList(talentList)
     }
 
     private fun handleEvent(event: HomeViewModel.Event) = when (event) {
-        is HomeViewModel.Event.OnClickMap -> findNavController().navigate(R.id.action_main_home_to_main_map2)
+        is HomeViewModel.Event.OnClickMap -> findNavController().navigate(R.id.action_main_home_to_writeFragment)
     }
 }

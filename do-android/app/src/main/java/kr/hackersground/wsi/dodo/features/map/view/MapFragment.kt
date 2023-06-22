@@ -1,21 +1,25 @@
 package kr.hackersground.wsi.dodo.features.map.view
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
-import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
 import kr.hackersground.wsi.dodo.databinding.FragmentMapBinding
+import kr.hackersground.wsi.dodo.features.map.adapter.MapMemberRecyclerViewAdapter
 import kr.hackersground.wsi.dodo.features.map.data.MemberData
 import kr.hackersground.wsi.dodo.features.map.vm.MapViewModel
+import ted.gun0912.clustering.naver.TedNaverClustering
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
@@ -24,12 +28,18 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     override val hasBottomNavigation: Boolean = true
 
     private lateinit var naverMap: NaverMap
-    private var members: List<MemberData> = emptyList()
-    private var isComplete: Boolean = false
+    private lateinit var adapter: MapMemberRecyclerViewAdapter
 
     override fun start(savedInstanceState: Bundle?) {
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
+        viewModel.getAllMembers()
+
+        adapter = MapMemberRecyclerViewAdapter { member ->
+            val action = MapFragmentDirections.actionMainMapToProfileFragment(member)
+            findNavController().navigate(action)
+        }
+        binding.rvMapMember.adapter = adapter
 
         collectGetAllMembersState()
     }
@@ -37,7 +47,8 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     private fun collectGetAllMembersState() = lifecycleScope.launchWhenStarted {
         viewModel.getAllMembersState.collect { state ->
             if (state.members.isNotEmpty()) {
-                members = state.members
+                setMarker(state.members)
+                adapter.submitList(state.members)
             }
 
             if (state.error != null) {
@@ -47,19 +58,33 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     }
 
     private fun setMarker(members: List<MemberData>) {
-        members.forEach { member ->
-
-            val marker = Marker()
-
-            marker.position = LatLng(member.latitude, member.longitude)
-
-            marker.map = naverMap
-            marker.tag = member.name
-
-            marker.setOnClickListener {
-                true
+        TedNaverClustering.with<MemberData>(requireContext(), naverMap)
+            .items(members)
+            .customCluster {
+                TextView(requireContext()).apply {
+                    setTextColor(Color.WHITE)
+                    text = "${it.size}개"
+                    setPadding(40, 40, 40, 40)
+                    background = requireContext().getDrawable(R.drawable.drawable_marker)
+                }
             }
-        }
+            .markerClickListener { member ->
+                val position = LatLng(member.latitude, member.longitude)
+                Toast.makeText(
+                    requireContext(),
+                    "${position.latitude},${position.longitude} 클릭됨",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .clusterClickListener { cluster ->
+                val position = cluster.position
+                Toast.makeText(
+                    requireContext(),
+                    "${cluster.size}개 클러스터 ${position.latitude},${position.longitude} 클릭됨",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .make()
     }
 
     override fun onMapReady(map: NaverMap) {
@@ -73,26 +98,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             setLogoMargin(0, 0, 16, 0)
             isCompassEnabled = false
             isZoomControlEnabled = false
-        }
-
-        if (members.isNotEmpty()) {
-            setMarker(members)
-            /*TedNaverClustering.with<MemberData>(requireContext(), naverMap)
-                .customMarker { clusterItem ->
-                    Marker(LatLng(clusterItem.latitude, clusterItem.longitude)).apply {
-                        icon = MarkerIcons.RED
-                        tag = clusterItem.name
-                    }
-                }.customCluster {
-                    TextView(requireContext()).apply {
-                        setBackgroundColor(Color.GREEN)
-                        setTextColor(Color.WHITE)
-                        text = "${it.size}개"
-                        setPadding(10, 10, 10, 10)
-                    }
-                }
-                .items(members)
-                .make()*/
         }
     }
 

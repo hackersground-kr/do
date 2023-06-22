@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="kr.hackersground.wsi.dodo.features.home.data.MemberData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/drawable_circle"
+                    android:backgroundTint="@color/material_dynamic_neutral95"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/pretendard_semi_bold"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+                    app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    android:text="@{item.name}"
+                    tools:text="최민재" />
+
+                <TextView
+                    android:id="@+id/tv_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/pretendard_medium"
+                    android:textSize="12sp"
+                    android:text="@{item.level}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_profile"
+                    tools:text="Lv.5" />
+
+                <TextView
+                    android:id="@+id/tv_major"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/drawable_circle"
+                    android:backgroundTint="@color/main"
+                    android:fontFamily="@font/pretendard_medium"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="3dp"
+                    android:textColor="@color/white"
+                    android:text="@{item.major}"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@id/tv_level"
+                    app:layout_constraintTop_toTopOf="@id/tv_level"
+                    tools:text="Android" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

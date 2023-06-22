@@ -12,10 +12,47 @@
             android:id="@+id/action_main_home_to_main_map2"
             app:destination="@id/main_map"
             app:popUpTo="@id/main_home"/>
+        <action
+            android:id="@+id/action_main_home_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_home" />
+        <action
+            android:id="@+id/action_main_home_to_writeFragment"
+            app:destination="@id/writeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_home" />
     </fragment>
 
     <fragment
         android:id="@+id/main_map"
         android:name="kr.hackersground.wsi.dodo.features.map.view.MapFragment"
-        android:label="MapFragment" />
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_main_map_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_map" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="kr.hackersground.wsi.dodo.features.profile.view.ProfileFragment"
+        android:label="ProfileFragment" >
+        <argument
+            android:name="member"
+            app:argType="kr.hackersground.wsi.domain.model.Member" />
+    </fragment>
+    <fragment
+        android:id="@+id/writeFragment"
+        android:name="kr.hackersground.wsi.dodo.features.write.view.WriteFragment"
+        android:label="WriteFragment" />
 </navigation>

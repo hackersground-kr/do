@@ -28,15 +28,15 @@
 
 ### 사전 준비 사항
 
- ### 데이터베이스
+### 데이터베이스
 > 1. Azure Database for MySQL 서버를 선택한다.
 > 2. 유연한 서비스 방법을 선택한다.
 > 3. 서버이름을 ddoo로 입력하고 지역을 Korea Center로 선택한뒤 mysql 버젼 8.0을 선택한다. 인증방법은 MySQL 인증만을 선택한다. 관리자 사용자 이름을 do로, 암호는 b1nd0108!로 설정한다.
 > 4. 다음 네트워킹으로 넘어가서 방화벽 규칙을 모든 ip를 허용으로 선택한다.
 > 5. 다음 만들기를 클릭하여 데이터베이스를 만든다.
-> 6. 데이터베이스에 접속하여 do 스키마를 생성한다.
->
- ### 환경변수
+> 6. 데이터베이스에 접속하여 `create database do` 명령을 이용해 do 스키마를 생성한다.
+
+### 환경변수
 > Github Repository Setting에서 Secrets and variabls의 Actions를 들어가서 아래값들을 name과 secret에 값을 넣어준다.
 
       PORT=8080

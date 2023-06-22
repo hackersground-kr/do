@@ -83,7 +83,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "humanbackend"
+          app-name: "ddoo"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_364508189C5A4E8B949848310FAD6C68 }}
           package: .

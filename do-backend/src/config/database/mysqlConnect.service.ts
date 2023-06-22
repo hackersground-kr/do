@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+import { config } from '../config';
 
 @Injectable()
 export class MysqlConnectService implements TypeOrmOptionsFactory {
@@ -8,11 +9,11 @@ export class MysqlConnectService implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       type: 'mysql',
-      host: 'dodo.mysql.database.azure.com',
-      port: 3306,
-      username: 'do',
-      password: 'b1nd0108!',
-      database: 'do',
+      host: config.DBHost,
+      port: config.DBPort,
+      username: config.DBUsername,
+      password: config.DBPassword,
+      database: config.DBDatabase,
       entities: [__dirname + '/../../**/**/*.entity{.ts,.js}'],
       synchronize: true,
       // logging: true,

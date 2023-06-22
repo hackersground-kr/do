@@ -31,9 +31,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 17
-    - name: build release
-      run: ./gradlew debugRelease
-      working-directory: ./do-android
     - name: upload artefact to App Center
       uses: wzieba/AppCenter-Github-Action@v1
       with:

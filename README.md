@@ -132,14 +132,6 @@ jobs:
 
 ```typescript
 export const config = {
-<<<<<<< HEAD
- port: 8080,
- DBHost: 'ddoo.mysql.database.azure.com',
- DBPort: 3306,
- DBUsername: 'do',
- DBPassword: '1q2w3e4r5t!',
- DBDatabase: 'do',
-=======
   port: 8080,
   baseUrl: "dddo.azurewebsites.net",
   DBHost: "ddoo.mysql.database.azure.com",
@@ -147,7 +139,6 @@ export const config = {
   DBUsername: "do",
   DBPassword: "1q2w3e4r5t",
   DBDatabase: "do",
->>>>>>> db478a4 (Update file upload)
 };
 ```
 

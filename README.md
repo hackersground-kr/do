@@ -31,36 +31,38 @@
 ### 데이터베이스
 > 1. Azure Database for MySQL 서버를 선택한다.
 > 2. 유연한 서비스 방법을 선택한다.
-> 3. 서버이름을 ddoo로 입력하고 지역을 Korea Center로 선택한뒤 mysql 버젼 8.0을 선택한다. 인증방법은 MySQL 인증만을 선택한다. 관리자 사용자 이름을 do로, 암호는 1q2w3e4r5t로 설정한다.
+> 3. 서버이름을 `ddoo`로 입력하고 지역을 `Korea Center`로 선택한뒤, mysql 버젼 `8.0`을 선택한다. 인증방법은 MySQL 인증만을 선택한다. 관리자 사용자 이름을 `do`로, 암호는 `1q2w3e4r5t`로 설정한다.
 > 4. 다음 네트워킹으로 넘어가서 방화벽 규칙을 모든 ip를 허용으로 선택한다.
 > 5. 다음 만들기를 클릭하여 데이터베이스를 만든다.
 > 6. 데이터베이스에 접속하여 `create database do` 명령을 이용해 do 스키마를 생성한다.
 
 ## 시작하기
 
- ### 서버
 > 1. App Services 선택한다.
-> 2. 인스턴스 이름은 `"ododo"`를 입력하고 런타임 스택을 `"Node 18 LTS"`로 설정한다. `"Linux"` 운영체제를 사용하고 `"Korea Center"` 지역을 선택하고 배포로 넘어간다.
+> 2. 인스턴스 이름은 `"dddo"`를 입력하고 런타임 스택을 `"Node 18 LTS"`로 설정한다. `"Linux"` 운영체제를 사용하고 `"Korea Center"` 지역을 선택하고 배포로 넘어간다.
 > 3. Github Action 설정을 사용으로 바꾸고 세부 정보의 조직, 리포지토리에는 `"do"`, 분기에는 `"main"`을 입력한다.
-> 4. 그리고 만들기를 눌러 App Service를 생성한다.
-> 5. App Service를 생성 후 첫 github action을 실행할 때에는 배포에 실패한다.
-> 6. `"main-ododo.yml"` 파일에서 `"Deploy to Azure Web App"`단계의 `"publish-profile"`의 값을 복사한다.
-> 7. `"backend_realose.yml"` 파일에서 `"Deploy to Azure Web App"`단계의 `"publish-profile"`의 값에 붙여넣기한다.
-> 8. `"main-ododo.yml"` 파일에 `"backend_realese.yml"` 파일의 내용의 전체를 복사 붙여넣기한다.
-> 9. `"main-ododo.yml"` 파일에 `"Deploy to Azure Web App"` 단계의 `"app-name"`을 `"ododo"`으로 바꾼다.
-> 10. `"backend_realese.yml"` 파일을 삭제한다.
-> 11. do-backend/config/config.ts에 해당 내용을 넣어주세요.
+> 4. 그리고 만들기를 눌러 App Service를 생성한다. (참고로, App Service를 생성 후 첫 github action을 실행할 때에는 배포에 실패한다.)
+> 5. `"main-dddo.yml"` 파일에서 `"Deploy to Azure Web App"`단계의 `"publish-profile"`의 값을 복사한다.
+> 6. `"backend_release.yml"` 파일에서 `"Deploy to Azure Web App"`단계의 `"publish-profile"`의 값에 붙여넣기한다.
+> 7. `"main-dddo.yml"` 파일에 `"backend_release.yml"` 파일의 내용의 전체를 복사 붙여넣기한다.
+> 8. `"main-dddo.yml"` 파일에 `"Deploy to Azure Web App"` 단계의 `"app-name"`을 `"dddo"`으로 바꾼다.
+> 9. `"backend_release.yml"` 파일을 삭제한다.
+> 10. do-backend/config/config.ts을 해당 내용으로 대체한다.
 
-      export const config = {
-        port: 8080,
-        DBHost: 'ddoo.mysql.database.azure.com',
-        DBPort: 3306,
-        DBUsername: 'do',
-        DBPassword: '1q2w3e4r5t',
-        DBDatabase: 'do',
-      }; 
+```typescript
+export const config = {
+ port: 8080,
+ DBHost: 'ddoo.mysql.database.azure.com',
+ DBPort: 3306,
+ DBUsername: 'do',
+ DBPassword: '1q2w3e4r5t',
+ DBDatabase: 'do',
+};
+```
       
 > 12. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
+
+<img width="1624" alt="image" src="https://github.com/hackersground-kr/do/assets/80818534/efe640d1-30c3-4f49-8711-b4e5cde38210">
 
 # Android 배포 설명서
 ## 사전 준비 사항

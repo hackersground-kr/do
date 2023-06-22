@@ -19,7 +19,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
     protected abstract val viewModel: VM
     protected open val hasBottomNavigation: Boolean = false
 
-    protected abstract fun start()
+    protected abstract fun start(savedInstanceState: Bundle?)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +34,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : BaseViewModel>(
         super.onViewCreated(view, savedInstanceState)
         prepareDataBinding()
         (activity as? MainActivity)?.setNavVisible(hasBottomNavigation)
-        start()
+        start(savedInstanceState)
     }
 
     private fun prepareDataBinding() {

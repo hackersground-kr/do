@@ -4,7 +4,7 @@ import javax.inject.Inject
 import kr.hackersground.wsi.domain.repository.MemberRepository
 
 class CreateMemberUseCase @Inject constructor(
-    private val memberRepository: MemberRepository,
+    val memberRepository: MemberRepository,
 ) {
 
     suspend operator fun invoke(

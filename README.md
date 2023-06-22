@@ -61,12 +61,15 @@
 
  ### 서버
 > 1. App Services 선택한다.
-> 2. 인스턴스 이름은 ododo를 입력하고 런타임 스택을 Node 18 LTS로 설정한다. Linux 운영체제를 사용하고 Korea Center 지역을 선택하고 배포로 넘어간다.
-> 3. Github Action 설정을 사용으로 바꾸고 세부 정보의 조직, 리포지토리 (do), 분기(main)을 입력한다.
+> 2. 인스턴스 이름은 `"ododo"`를 입력하고 런타임 스택을 `"Node 18 LTS"`로 설정한다. `"Linux"` 운영체제를 사용하고 `"Korea Center"` 지역을 선택하고 배포로 넘어간다.
+> 3. Github Action 설정을 사용으로 바꾸고 세부 정보의 조직, 리포지토리에는 `"do"`, 분기에는 `"main"`을 입력한다.
 > 4. 그리고 만들기를 눌러 App Service를 생성한다.
 > 5. App Service를 생성 후 첫 github action을 실행할 때에는 배포에 실패한다.
-> 6. main-ododo.yml 파일에 backend_realese.yml 파일의 내용을 복사 붙여넣기한다.
-> 7. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
+> 6. main-ododo.yml 파일에서 Deploy to Azure Web App단계의 publish-profile의 값을 복사한다.
+> 7. backend_realose.yml 파일에서 Deploy to Azure Web App단계의 publish-profile의 값에 붙여넣기한다.
+> 8. main-ododo.yml 파일에 backend_realese.yml 파일의 내용의 전체를 복사 붙여넣기한다.
+> 9. main-ododo.yml 파일에 Deploy to Azure Web App 단계의 app-name을 `"ododo"`으로 바꾼다.
+> 10. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
 
 ### 안드
 > 1. AndroidStudio의 상단 툴바에서 Build -> Build Bundle(s) / APK(s) -> Build APK(s)를 클릭합니다.

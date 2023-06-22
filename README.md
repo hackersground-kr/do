@@ -53,7 +53,7 @@
 
 ## 시작하기
 
-> ### 서버
+ ### 서버
 > 1. App Services 선택한다.
 > 2. 인스턴스 이름은 ododo를 입력하고 런타임 스택을 Node 18 LTS로 설정한다. Linux 운영체제를 사용하고 Korea Center 지역을 선택하고 배포로 넘어간다.
 > 3. Github Action 설정을 사용으로 바꾸고 세부 정보의 조직, 리포지토리 (do), 분기(main)을 입력한다.
@@ -62,4 +62,4 @@
 > 6. main-ododo.yml 파일에 backend_realese.yml 파일의 내용을 복사 붙여넣기한다.
 > 7. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
 
-> ### 안드
+ ### 안드

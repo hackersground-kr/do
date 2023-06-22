@@ -110,7 +110,6 @@
             android:background="@drawable/bg_button_round"
             android:backgroundTint="@color/main"
             android:fontFamily="@font/pretendard_bold"
-            android:onClick="@{() -> vm.onClickMap()}"
             android:text="스카우트 제의받기"
             android:textColor="@color/white"
             android:layout_marginBottom="20dp"

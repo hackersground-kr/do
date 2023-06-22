@@ -3,6 +3,7 @@ plugins {
     id(Plugins.kotlinAndroid)
     id(Plugins.kapt)
     id(Plugins.hilt)
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 @Suppress("UnstableApiUsage")

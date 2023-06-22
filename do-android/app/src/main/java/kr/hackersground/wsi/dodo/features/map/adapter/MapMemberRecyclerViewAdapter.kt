@@ -6,8 +6,9 @@ import kr.hackersground.wsi.dodo.base.BaseListAdapter
 import kr.hackersground.wsi.dodo.databinding.ItemMapMemberBinding
 import kr.hackersground.wsi.dodo.features.map.adapter.diffutil.MemberDataDiffUtilCallback
 import kr.hackersground.wsi.dodo.features.map.data.MemberData
+import kr.hackersground.wsi.domain.model.Member
 
-class MapMemberRecyclerViewAdapter : BaseListAdapter<MemberData, ItemMapMemberBinding>(
+class MapMemberRecyclerViewAdapter(val onClickItem: (member: Member) -> Unit) : BaseListAdapter<MemberData, ItemMapMemberBinding>(
     R.layout.item_map_member,
     MemberDataDiffUtilCallback
 ) {
@@ -18,5 +19,14 @@ class MapMemberRecyclerViewAdapter : BaseListAdapter<MemberData, ItemMapMemberBi
             .load("https://randomuser.me/api/portraits/men/${num}.jpg")
             .circleCrop()
             .into(binding.ivProfile)
+
+        binding.root.setOnClickListener {
+            onClickItem(Member(
+                name = item.name,
+                latitude = item.latitude,
+                longitude = item.longitude,
+                pdfUrl = item.pdfUrl,
+            ))
+        }
     }
 }

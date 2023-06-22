@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
@@ -25,7 +26,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     private var members: List<MemberData> = emptyList()
 
     override fun start(savedInstanceState: Bundle?) {
-        memberAdapter = MemberAdapter()
+        memberAdapter = MemberAdapter { member ->
+            val action = HomeFragmentDirections.actionMainHomeToProfileFragment(member)
+            findNavController().navigate(action)
+        }
         viewModel.getAllMember()
 
         binding.rvTalent.adapter = memberAdapter

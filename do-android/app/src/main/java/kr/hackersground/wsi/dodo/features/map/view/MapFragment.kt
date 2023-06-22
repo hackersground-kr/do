@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
@@ -34,7 +35,10 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
         binding.mapView.getMapAsync(this)
         viewModel.getAllMembers()
 
-        adapter = MapMemberRecyclerViewAdapter()
+        adapter = MapMemberRecyclerViewAdapter { member ->
+            val action = MapFragmentDirections.actionMainMapToProfileFragment(member)
+            findNavController().navigate(action)
+        }
         binding.rvMapMember.adapter = adapter
 
         collectGetAllMembersState()

@@ -80,12 +80,35 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_talent"
                 android:layout_width="0dp"
-                android:layout_height="500dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintStart_toStartOf="@id/gl_left"
                 app:layout_constraintEnd_toEndOf="@id/gl_right"
                 app:layout_constraintTop_toBottomOf="@+id/tv_near_talent"
+                />
+
+            <TextView
+                android:id="@+id/tv_recommended_talent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/rv_talent"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                android:text="인지도가 추천하는 인재들!"
+                android:layout_marginTop="30dp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_recommended_talent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintStart_toStartOf="@id/gl_left"
+                app:layout_constraintEnd_toEndOf="@id/gl_right"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recommended_talent"
                 />
 
             <TextView
@@ -94,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:text="주변에 인재를 지도에서 볼 수 있어요!"
                 android:layout_marginTop="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/rv_talent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_recommended_talent"
                 app:layout_constraintStart_toStartOf="@id/gl_left"
                 app:layout_constraintEnd_toEndOf="@id/gl_right"
                 />

@@ -19,9 +19,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override val hasBottomNavigation: Boolean = true
     private lateinit var talentAdapter: TalentAdapter
     private var talentList: List<Talent> = emptyList()
+    private var recommendedTalentList: List<Talent> = emptyList()
     override fun start() {
         talentAdapter = TalentAdapter()
         binding.rvTalent.adapter = talentAdapter
+        binding.rvRecommendedTalent.adapter = talentAdapter
         ChangeTalentRecycleView()
         binding.tvNearTalent.text = "지금 지방에는 "+ talentList.size +"명의 인재가 있습니다!"
         repeatOnStarted {
@@ -32,6 +34,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     private fun ChangeTalentRecycleView() {
         for (i: Int in 1..10) {
             talentList += Talent(1,"test","des",123,123,"123")
+        }
+        for (i: Int in 1..10) {
+            recommendedTalentList += Talent(1,"test","des",123,123,"123")
         }
         talentAdapter.submitList(talentList)
     }

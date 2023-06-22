@@ -10,7 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -28,9 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{user.name}"
-            app:layout_constraintStart_toEndOf="@+id/im_profile"
+            app:layout_constraintEnd_toEndOf="@+id/im_profile"
+            app:layout_constraintStart_toStartOf="@+id/im_profile"
             android:layout_marginStart="10dp"
-            app:layout_constraintTop_toTopOf="@id/im_profile"
+            app:layout_constraintTop_toBottomOf="@id/im_profile"
             />
 
         <TextView
@@ -38,9 +39,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textColor="@color/unselect"
             android:text="@{user.descriptor}"
             android:maxLines="4"
-            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintStart_toStartOf="@id/im_profile"
+            app:layout_constraintEnd_toEndOf="@id/im_profile"
             app:layout_constraintTop_toBottomOf="@id/tv_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

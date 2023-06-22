@@ -16,12 +16,12 @@ class MapViewModel @Inject constructor(
     val getAllMembersUseCase: GetAllMembersUseCase,
 ) : BaseViewModel() {
 
+    private val _getAllMembersState = MutableStateFlow(GetAllMembersState())
+    val getAllMembersState: StateFlow<GetAllMembersState> = _getAllMembersState
+
     init {
         getAllMembers()
     }
-
-    private val _getAllMembersState = MutableStateFlow(GetAllMembersState())
-    val getAllMembersState: StateFlow<GetAllMembersState> get() = _getAllMembersState
 
     private fun getAllMembers() = viewModelScope.launch {
         _getAllMembersState.value = GetAllMembersState(isLoading = true)

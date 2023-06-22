@@ -1,7 +1,6 @@
 package kr.hackersground.wsi.dodo.features.map.view
 
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Genres.Members
 import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
@@ -11,14 +10,10 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
-import com.naver.maps.map.overlay.OverlayImage
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
-import kr.hackersground.wsi.dodo.databinding.FragmentHomeBinding
 import kr.hackersground.wsi.dodo.databinding.FragmentMapBinding
-import kr.hackersground.wsi.dodo.features.home.vm.HomeViewModel
 import kr.hackersground.wsi.dodo.features.map.data.MemberData
 import kr.hackersground.wsi.dodo.features.map.vm.MapViewModel
 
@@ -29,6 +24,8 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     override val hasBottomNavigation: Boolean = true
 
     private lateinit var naverMap: NaverMap
+    private var members: List<MemberData> = emptyList()
+    private var isComplete: Boolean = false
 
     override fun start(savedInstanceState: Bundle?) {
         binding.mapView.onCreate(savedInstanceState)
@@ -40,7 +37,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     private fun collectGetAllMembersState() = lifecycleScope.launchWhenStarted {
         viewModel.getAllMembersState.collect { state ->
             if (state.members.isNotEmpty()) {
-                setMarker(state.members)
+                members = state.members
             }
 
             if (state.error != null) {
@@ -76,6 +73,26 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             setLogoMargin(0, 0, 16, 0)
             isCompassEnabled = false
             isZoomControlEnabled = false
+        }
+
+        if (members.isNotEmpty()) {
+            setMarker(members)
+            /*TedNaverClustering.with<MemberData>(requireContext(), naverMap)
+                .customMarker { clusterItem ->
+                    Marker(LatLng(clusterItem.latitude, clusterItem.longitude)).apply {
+                        icon = MarkerIcons.RED
+                        tag = clusterItem.name
+                    }
+                }.customCluster {
+                    TextView(requireContext()).apply {
+                        setBackgroundColor(Color.GREEN)
+                        setTextColor(Color.WHITE)
+                        text = "${it.size}개"
+                        setPadding(10, 10, 10, 10)
+                    }
+                }
+                .items(members)
+                .make()*/
         }
     }
 

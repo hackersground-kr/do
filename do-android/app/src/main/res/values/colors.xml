@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#FF2EB883</color>
+    <color name="main95">#952EB883</color>
     <color name="second">#FF10DF99</color>
     <color name="unselect">#232323</color>
 </resources>

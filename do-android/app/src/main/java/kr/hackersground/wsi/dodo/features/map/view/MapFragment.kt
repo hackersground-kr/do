@@ -1,8 +1,10 @@
 package kr.hackersground.wsi.dodo.features.map.view
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -10,12 +12,14 @@ import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.util.MarkerIcons
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
 import kr.hackersground.wsi.dodo.databinding.FragmentMapBinding
 import kr.hackersground.wsi.dodo.features.map.data.MemberData
 import kr.hackersground.wsi.dodo.features.map.vm.MapViewModel
+import ted.gun0912.clustering.naver.TedNaverClustering
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.fragment_map), OnMapReadyCallback {
@@ -28,6 +32,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     override fun start(savedInstanceState: Bundle?) {
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
+        viewModel.getAllMembers()
 
         collectGetAllMembersState()
     }
@@ -45,23 +50,36 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     }
 
     private fun setMarker(members: List<MemberData>) {
-        members.forEach { member ->
-
-            val marker = Marker()
-
-            marker.position = LatLng(member.latitude, member.longitude)
-
-            marker.map = naverMap
-            marker.tag = member.name
-
-            marker.setOnClickListener {
-                true
+        TedNaverClustering.with<MemberData>(requireContext(), naverMap)
+            .items(members)
+            .customCluster {
+                TextView(requireContext()).apply {
+                    setTextColor(Color.WHITE)
+                    text = "${it.size}개"
+                    setPadding(40, 40, 40, 40)
+                    background = requireContext().getDrawable(R.drawable.drawable_marker)
+                }
             }
-        }
+            .markerClickListener { member ->
+                val position = LatLng(member.latitude, member.longitude)
+                Toast.makeText(
+                    requireContext(),
+                    "${position.latitude},${position.longitude} 클릭됨",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .clusterClickListener { cluster ->
+                val position = cluster.position
+                Toast.makeText(
+                    requireContext(),
+                    "${cluster.size}개 클러스터 ${position.latitude},${position.longitude} 클릭됨",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            .make()
     }
 
     override fun onMapReady(map: NaverMap) {
-        viewModel.getAllMembers()
         naverMap = map
         naverMap.maxZoom = 20.0
         naverMap.minZoom = 5.0
@@ -73,22 +91,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             isCompassEnabled = false
             isZoomControlEnabled = false
         }
-            /*TedNaverClustering.with<MemberData>(requireContext(), naverMap)
-                .customMarker { clusterItem ->
-                    Marker(LatLng(clusterItem.latitude, clusterItem.longitude)).apply {
-                        icon = MarkerIcons.RED
-                        tag = clusterItem.name
-                    }
-                }.customCluster {
-                    TextView(requireContext()).apply {
-                        setBackgroundColor(Color.GREEN)
-                        setTextColor(Color.WHITE)
-                        text = "${it.size}개"
-                        setPadding(10, 10, 10, 10)
-                    }
-                }
-                .items(members)
-                .make()*/
     }
 
     override fun onStart() {

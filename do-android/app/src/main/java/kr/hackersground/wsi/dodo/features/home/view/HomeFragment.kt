@@ -5,7 +5,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
@@ -33,8 +32,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         binding.rvRecommendedTalent.adapter = memberAdapter
 
         collectGetAllMembersState()
-        binding.tvNearTalent.text = "지금 지방에는 "+ members.size +"명의 인재가 있습니다!"
-
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
@@ -49,6 +46,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             if (state.error != null) {
                 Toast.makeText(requireContext(), state.error.toString(), Toast.LENGTH_SHORT).show()
             }
+
+            binding.tvNearTalent.text = "지금 지방에는 "+ members.size +"명의 인재가 있습니다!"
             Log.d("HomeFragment", members.toString())
         }
     }

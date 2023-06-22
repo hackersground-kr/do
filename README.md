@@ -324,8 +324,4 @@ Appcenter에 로그인할 경우의 아래의 화면이 보입니다.
     <img width="408" alt="스크린샷 2023-06-23 오전 5 25 15" src="https://github.com/hackersground-kr/do/assets/80940200/c903623e-c7d6-4f9b-ae79-6ea47490b066">
 
    App Center에서 아래와 같이 서비스가 구성되었음을 확인할 수 있습니다!
-  <img width="1552" alt="스크린샷 2023-06-23 오전 5 30 40" src="https://github.com/hackersground-kr/do/assets/80940200/933ac4af-2f49-445c-b265-95f8ca2aa77c">
-
-
-
-
+   <img width="1552" alt="스크린샷 2023-06-23 오전 5 53 31" src="https://github.com/hackersground-kr/do/assets/80940200/7319f30c-fc80-4304-bb4d-75f224688a05">

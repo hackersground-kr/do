@@ -51,6 +51,12 @@
       DB_ENTITIES=src/api/models/**/*.ts,src/api/models/**/*.js
       DB_MIGRATIONS=src/database/migrations/*.ts,src/database/migrations/*.js
 
+ ### AndroidStudio
+* AndroidStudio를 설치한 후 do-android 폴더를 엽니다.
+* JDK, JavaVersion을 17로 설정합니다.
+### Appcenter
+* Appcenter 계정을 준비합니다.
+
 ## 시작하기
 
  ### 서버
@@ -62,4 +68,29 @@
 > 6. main-ododo.yml 파일에 backend_realese.yml 파일의 내용을 복사 붙여넣기한다.
 > 7. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
 
- ### 안드
+> ### 안드
+> 1. AndroidStudio의 상단 툴바에서 Build -> Build Bundle(s) / APK(s) -> Build APK(s)를 클릭합니다.
+
+<img width="1440" alt="스크린샷 2023-06-22 오후 7 44 45" src="https://github.com/hackersground-kr/do/assets/80940200/cf8ceccc-794b-49bd-bad5-be70c67db0b7">
+
+> 2. do/do-android/app/build/outputs/apk/debug/app-debug.apk 위 경로에 apk 파일이 만들어 진 것을 확인합니다.
+> 3. appcenter에서 new app을 클릭합니다.
+
+<img width="587" alt="스크린샷 2023-06-22 오후 7 50 16" src="https://github.com/hackersground-kr/do/assets/80940200/54eb9118-65d1-4a7e-a3a1-3b71a298f425">
+
+> 4. 위 사진과 같이 정보를 입력한 후 add new app 버튼을 클릭합니다.
+
+<img width="1440" alt="스크린샷 2023-06-22 오후 7 51 17" src="https://github.com/hackersground-kr/do/assets/80940200/f6e8597e-d18b-4fbd-9cbf-ca7dcc285948">
+
+> 5. 위 사진의 화면에서 Distribute -> Release에서 new Release 버튼을 클릭합니다.
+
+<img width="592" alt="스크린샷 2023-06-22 오후 7 53 20" src="https://github.com/hackersground-kr/do/assets/80940200/44bd4816-a78c-4024-8303-0ccd260f68ce">
+
+> 6. 위 사진과 같이 앞의 apk 파일을 업로드 합니다.
+> 7. 완료 후 next 버튼을 클릭합니다.
+> 8. Notes와 Destinations, Review에 원하는 정보를 추가 후 Review에서 Distribute 버튼을 클릭합니다.
+
+<img width="1440" alt="스크린샷 2023-06-22 오후 7 51 17" src="https://github.com/hackersground-kr/do/assets/80940200/f6e8597e-d18b-4fbd-9cbf-ca7dcc285948">
+
+> 9. 위 사진과 같이 확인할 수 있으며 Release를 클릭하여 Download를 받습니다. 
+ 

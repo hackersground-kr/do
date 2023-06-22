@@ -128,7 +128,7 @@ jobs:
 
 8. 위 6번에서 복사한 `publish-profile`의 값을 새로운 내용으로 대체한 `main-dddo.yml`의 `Deploy to Azure Web App` 스텝의 `publish-profile: ` 뒤에 추가해준다. (값을 할당)
 9. `main-dddo.yml` 파일에 `Deploy to Azure Web App` 스텝의 with 옵션의 `app-name: ` 뒤에 `dddo`를 추가해준다. (값을 할당)
-10. do-backend/config/config.ts을 해당 내용으로 대체한다.
+10. do-backend/src/config/config.ts을 해당 내용으로 대체한다.
 
 ```typescript
 export const config = {

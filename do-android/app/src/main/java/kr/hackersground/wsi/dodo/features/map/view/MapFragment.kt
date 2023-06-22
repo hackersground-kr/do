@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
 import kr.hackersground.wsi.dodo.databinding.FragmentMapBinding
+import kr.hackersground.wsi.dodo.features.map.adapter.MapMemberRecyclerViewAdapter
 import kr.hackersground.wsi.dodo.features.map.data.MemberData
 import kr.hackersground.wsi.dodo.features.map.vm.MapViewModel
 import ted.gun0912.clustering.naver.TedNaverClustering
@@ -26,11 +27,15 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     override val hasBottomNavigation: Boolean = true
 
     private lateinit var naverMap: NaverMap
+    private lateinit var adapter: MapMemberRecyclerViewAdapter
 
     override fun start(savedInstanceState: Bundle?) {
         binding.mapView.onCreate(savedInstanceState)
         binding.mapView.getMapAsync(this)
         viewModel.getAllMembers()
+
+        adapter = MapMemberRecyclerViewAdapter()
+        binding.rvMapMember.adapter = adapter
 
         collectGetAllMembersState()
     }
@@ -39,6 +44,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
         viewModel.getAllMembersState.collect { state ->
             if (state.members.isNotEmpty()) {
                 setMarker(state.members)
+                adapter.submitList(state.members)
             }
 
             if (state.error != null) {

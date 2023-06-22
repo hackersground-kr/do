@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="item"
+            type="kr.hackersground.wsi.dodo.features.map.data.MemberData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +34,7 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:background="@drawable/drawable_circle"
-                    android:backgroundTint="@color/main"
+                    android:backgroundTint="@color/material_dynamic_neutral95"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,6 +47,7 @@
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@id/iv_profile"
                     app:layout_constraintStart_toEndOf="@id/iv_profile"
+                    android:text="@{item.name}"
                     tools:text="최민재" />
 
                 <TextView
@@ -54,6 +57,7 @@
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/pretendard_medium"
                     android:textSize="12sp"
+                    android:text="@{item.level}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/iv_profile"
                     tools:text="Lv.5" />
@@ -69,6 +73,7 @@
                     android:paddingHorizontal="10dp"
                     android:paddingVertical="3dp"
                     android:textColor="@color/white"
+                    android:text="@{item.major}"
                     android:textSize="13sp"
                     app:layout_constraintStart_toEndOf="@id/tv_level"
                     app:layout_constraintTop_toTopOf="@id/tv_level"

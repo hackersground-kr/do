@@ -37,6 +37,7 @@
 >
 > ### 환경변수
 > 1. Github Repository Setting에서 Secrets and variabls의 Actions를 들어가서 아래 secret과 값을 넣어준다.
+
       # App
       PORT=8080
       APP_HOST=http://localhost

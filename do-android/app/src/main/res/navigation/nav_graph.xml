@@ -7,7 +7,12 @@
     <fragment
         android:id="@+id/main_home"
         android:name="kr.hackersground.wsi.dodo.features.home.view.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_main_home_to_main_map2"
+            app:destination="@id/main_map"
+            app:popUpTo="@id/main_home"/>
+    </fragment>
 
     <fragment
         android:id="@+id/main_map"

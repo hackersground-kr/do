@@ -1,13 +1,15 @@
 package kr.hackersground.wsi.dodo.features.home.view
 
-import android.util.Log
+import android.annotation.SuppressLint
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
 import kr.hackersground.wsi.dodo.databinding.FragmentHomeBinding
 import kr.hackersground.wsi.dodo.features.adapter.TalentAdapter
 import kr.hackersground.wsi.dodo.features.home.vm.HomeViewModel
+import kr.hackersground.wsi.dodo.util.repeatOnStarted
 import kr.hackersground.wsi.domain.model.Talent
 
 @AndroidEntryPoint
@@ -22,6 +24,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         binding.rvTalent.adapter = talentAdapter
         ChangeTalentRecycleView()
         binding.tvNearTalent.text = "지금 지방에는 "+ talentList.size +"명의 인재가 있습니다!"
+        repeatOnStarted {
+            viewModel.eventFlow.collect { event -> handleEvent(event) }
+        }
     }
 
     private fun ChangeTalentRecycleView() {
@@ -31,7 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         talentAdapter.submitList(talentList)
     }
 
-    fun onClickMap() {
-
+    private fun handleEvent(event: HomeViewModel.Event) = when (event) {
+        is HomeViewModel.Event.OnClickMap -> findNavController().navigate(R.id.action_main_home_to_main_map2)
     }
 }

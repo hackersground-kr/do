@@ -302,7 +302,9 @@ Appcenter에 로그인할 경우의 아래의 화면이 보입니다.
     > appName: 계정이름/서비스이름
     > 
     
-    ex) appName: mooooong/do
+    ex) appName: mooooong/do | 아래 사진과 같이 작성합니다.
+  <img width="596" alt="스크린샷 2023-06-23 오전 5 20 11" src="https://github.com/hackersground-kr/do/assets/80940200/8558bb36-87ad-4b3e-86a7-f4a6035bd8d0">
+
     
     변경사항을 commit → push 합니다.
     
@@ -313,3 +315,13 @@ Appcenter에 로그인할 경우의 아래의 화면이 보입니다.
     <img width="1552" alt="new8" src="https://github.com/hackersground-kr/do/assets/80940200/c4abdf50-ac52-4bec-8bbb-1b863b591ab4">
     
     위 `Download` 버튼 옆의 아이콘을 클릭하여 다운받을 수 있습니다.
+    자세한 다운로드 방법은 아래와 같습니다.
+    <img width="1552" alt="스크린샷 2023-06-23 오전 5 21 41" src="https://github.com/hackersground-kr/do/assets/80940200/a90c8a54-f457-44c5-9d45-f00fd043c123">
+    appcenter -> 본인의 프로젝트 -> distribute -> Releases 에서 위 사진과 같이 박스 모양의 아이콘이 있는 Bar를 클릭합니다.
+    <img width="1552" alt="스크린샷 2023-06-23 오전 5 24 07" src="https://github.com/hackersground-kr/do/assets/80940200/cc1b7765-e07a-4460-b999-951477fdcbfe">
+    위와 같은 화면이 나오는데 우측 상단의 설치 아이콘을 클릭합니다.
+    그 후 등장하는 QR 코드를 찍으면 무사히 apk 파일이 설치됩니다.
+    <img width="408" alt="스크린샷 2023-06-23 오전 5 25 15" src="https://github.com/hackersground-kr/do/assets/80940200/c903623e-c7d6-4f9b-ae79-6ea47490b066">
+
+
+

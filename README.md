@@ -36,7 +36,7 @@
 > 6. 그리고 해당 데이터베이스에 접속하여 do 스키마를 생성한다.
 >
 > ### 환경변수
-> 1. Github Repository Setting에서 Secrets and variabls의 Actions를 들어가서 아래 secret과 값을 넣어준다.
+> 1. Github Repository Setting에서 Secrets and variabls의 Actions를 들어가서 아래값들을 name과 secret에 값을 넣어준다.
 
 #
       PORT=8080

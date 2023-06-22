@@ -24,8 +24,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     override val hasBottomNavigation: Boolean = true
 
     private lateinit var naverMap: NaverMap
-    private var members: List<MemberData> = emptyList()
-    private var isComplete: Boolean = false
 
     override fun start(savedInstanceState: Bundle?) {
         binding.mapView.onCreate(savedInstanceState)
@@ -37,7 +35,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     private fun collectGetAllMembersState() = lifecycleScope.launchWhenStarted {
         viewModel.getAllMembersState.collect { state ->
             if (state.members.isNotEmpty()) {
-                members = state.members
+                setMarker(state.members)
             }
 
             if (state.error != null) {
@@ -63,6 +61,7 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
     }
 
     override fun onMapReady(map: NaverMap) {
+        viewModel.getAllMembers()
         naverMap = map
         naverMap.maxZoom = 20.0
         naverMap.minZoom = 5.0
@@ -74,9 +73,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             isCompassEnabled = false
             isZoomControlEnabled = false
         }
-
-        if (members.isNotEmpty()) {
-            setMarker(members)
             /*TedNaverClustering.with<MemberData>(requireContext(), naverMap)
                 .customMarker { clusterItem ->
                     Marker(LatLng(clusterItem.latitude, clusterItem.longitude)).apply {
@@ -93,7 +89,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
                 }
                 .items(members)
                 .make()*/
-        }
     }
 
     override fun onStart() {

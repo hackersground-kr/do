@@ -23,6 +23,7 @@ jobs:
 
       - name: Generate Environment Variables File for Production
         run: |
+          cd do-backend
           echo "PORT=$PORT" >> .env
           echo "APP_HOST=$APP_HOST" >> .env
           echo "DB_CONNECTION=$DB_CONNECTION" >> .env

@@ -33,12 +33,13 @@ jobs:
         java-version: 17
     - name: build release
       run: ./gradlew debugRelease
+      working-directory: ./do-android
     - name: upload artefact to App Center
-      uses: mooooong/AppCenter-Github-Action@v1
+      uses: wzieba/AppCenter-Github-Action@v1
       with:
-        appName: mooooong/do
+        appName: wzieba/do
         token: ${{secrets.APP_CENTER_TOKEN}}
         group: Testers
-        file: do-android/app/build/outputs/apk/debug
+        file: do-android/app/build/outputs/apk/debug/app.apk
         notifyTesters: true
         debug: false

@@ -36,10 +36,10 @@
 ### 데이터베이스 구축
 > 1. Azure Database for MySQL 서버를 선택한다.
 > 2. 유연한 서비스 방법을 선택한다.
-> 3. 서버이름을 `ddoo`로 입력하고 지역을 `Korea Center`로 선택한뒤, mysql 버젼 `8.0`을 선택한다. 인증방법은 MySQL 인증만을 선택한다. 관리자 사용자 이름을 `do`로, 암호는 `1q2w3e4r5t`로 설정한다.
+> 3. 서버이름을 `ddoo`로 입력하고 지역을 `Korea Center`로 선택한뒤, mysql 버젼 `8.0`을 선택한다. 인증방법은 MySQL 인증만을 선택한다. 관리자 사용자 이름을 `do`로, 암호는 `1q2w3e4r5t!`로 설정한다.
 > 4. 다음 네트워킹으로 넘어가서 방화벽 규칙을 모든 ip를 허용으로 선택한다.
 > 5. 다음 만들기를 클릭하여 데이터베이스를 만든다.
-> 6. 데이터베이스에 접속(터미널에서 `mysql -u do -h ddoo.mysql.database.azure.com -P 3306 -p` 명령어 실행 및 패스워드 `1q2w3e4r5t` 작성)하여 `create database do` 명령을 이용해 do 스키마를 생성한다.
+> 6. 데이터베이스에 접속(터미널에서 `mysql -u do -h ddoo.mysql.database.azure.com -P 3306 -p` 명령어 실행 및 패스워드 `1q2w3e4r5t!` 작성)하여 `create database do` 명령을 이용해 do 스키마를 생성한다.
 
 ### App Service 배포
 1. Microsoft Azure에서 App Services 만들기를 누르고, `웹 앱`을 선택한다.
@@ -128,7 +128,7 @@ export const config = {
  DBHost: 'ddoo.mysql.database.azure.com',
  DBPort: 3306,
  DBUsername: 'do',
- DBPassword: '1q2w3e4r5t',
+ DBPassword: '1q2w3e4r5t!',
  DBDatabase: 'do',
 };
 ```

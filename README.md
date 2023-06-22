@@ -58,7 +58,7 @@
         DBUsername: 'do',
         DBPassword: '1q2w3e4r5t',
         DBDatabase: 'do',
-      };
+      }; 
       
 > 12. 이후 커밋과 푸시를 하여 github action이 동작하도록 한다.
 

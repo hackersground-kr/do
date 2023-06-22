@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">인지도</string>
+    <string name="title_home">홈</string>
+    <string name="title_map">지도</string>
+</resources>

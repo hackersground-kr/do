@@ -1,6 +1,6 @@
 package kr.hackersground.wsi.dodo.features.home.view
 
-import android.annotation.SuppressLint
+import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +20,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     private lateinit var talentAdapter: TalentAdapter
     private var talentList: List<Talent> = emptyList()
     private var recommendedTalentList: List<Talent> = emptyList()
-    override fun start() {
+
+    override fun start(savedInstanceState: Bundle?) {
         talentAdapter = TalentAdapter()
         binding.rvTalent.adapter = talentAdapter
         binding.rvRecommendedTalent.adapter = talentAdapter

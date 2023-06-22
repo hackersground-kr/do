@@ -43,10 +43,15 @@ object Libraries {
     private val googleLocation = "com.google.android.gms:play-services-location:${Versions.googleLocation}"
     val googleGms = "com.google.gms:google-services:${Versions.googleGms}"
     private val naverMap = "com.naver.maps:map-sdk:${Versions.naverMap}"
+    private val clustering = "io.github.ParkSangGwon:tedclustering-naver:1.0.2"
 
     // coroutine
     private val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
     private val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
+
+    // deployment
+    private val appcenterAnalytics = "com.microsoft.appcenter:appcenter-analytics:${Versions.appCenterSdk}"
+    private val appcenterCrashes = "com.microsoft.appcenter:appcenter-crashes:${Versions.appCenterSdk}"
 
     // test
     val junit = "junit:junit:${Versions.junit}"
@@ -91,10 +96,16 @@ object Libraries {
     val mapLibraries = arrayListOf<String>().apply {
         add(naverMap)
         add(googleLocation)
+        add(clustering)
     }
 
     val appLibraries = arrayListOf<String>().apply {
         add(coreKtx)
+    }
+
+    val deploymentLibraries = arrayListOf<String>().apply {
+        add(appcenterAnalytics)
+        add(appcenterCrashes)
     }
 
     val testLibraries = arrayListOf<String>().apply {

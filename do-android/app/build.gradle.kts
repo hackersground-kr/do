@@ -40,6 +40,8 @@ android {
 
 dependencies {
     implementation(projects.domain)
+    implementation(projects.data)
+    implementation(projects.di)
 
     implementation(Libraries.androidLibraries)
     implementation(Libraries.coroutineLibraries)
@@ -50,6 +52,8 @@ dependencies {
 
     implementation(Libraries.hiltAndroid)
     kapt(Libraries.hiltCompiler)
+
+    implementation(Libraries.deploymentLibraries)
 
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.testLibraries)

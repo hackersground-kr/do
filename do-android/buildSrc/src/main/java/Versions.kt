@@ -30,6 +30,8 @@ object Versions {
     const val googleGms = "4.3.14"
     const val naverMap = "3.16.0"
 
+    const val appCenterSdk = "4.4.5"
+
     // test
     const val junit = "4.13.2"
     const val extJunit = "1.1.5"

@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - humanbackend
+name: Build and deploy Node.js app to Azure Web App - do
 
 on:
   push:
@@ -85,5 +85,5 @@ jobs:
         with:
           app-name: "ddoo"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_364508189C5A4E8B949848310FAD6C68 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8CD6854CA4FF4F6FBD31423635E33AD7 }}
           package: .

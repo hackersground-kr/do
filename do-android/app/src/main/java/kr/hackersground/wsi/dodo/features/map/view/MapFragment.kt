@@ -50,7 +50,6 @@ class MapFragment : BaseFragment<FragmentMapBinding, MapViewModel>(R.layout.frag
             if (state.error != null) {
                 Toast.makeText(requireContext(), state.error.toString(), Toast.LENGTH_SHORT).show()
             }
-            Log.d("Map", members.toString())
         }
     }
 

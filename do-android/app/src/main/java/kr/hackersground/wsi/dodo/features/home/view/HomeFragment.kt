@@ -9,7 +9,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseFragment
 import kr.hackersground.wsi.dodo.databinding.FragmentHomeBinding
-import kr.hackersground.wsi.dodo.features.adapter.MemberAdapter
+import kr.hackersground.wsi.dodo.features.home.adapter.MemberAdapter
 import kr.hackersground.wsi.dodo.features.home.data.MemberData
 import kr.hackersground.wsi.dodo.features.home.vm.HomeViewModel
 import kr.hackersground.wsi.dodo.features.main.view.MainActivity
@@ -41,13 +41,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         viewModel.getAllMembersState.collect { state ->
             if (state.members.isNotEmpty()) {
                 members = state.members
-                memberAdapter.submitList(members.map {Member(it.name, it.latitude, it.longitude, it.pdfUrl) })
+                memberAdapter.submitList(members.map {MemberData(it.name, it.latitude, it.longitude, it.pdfUrl) })
             }
             if (state.error != null) {
                 Toast.makeText(requireContext(), state.error.toString(), Toast.LENGTH_SHORT).show()
             }
 
-            binding.tvNearTalent.text = "지금 지방에는 "+ members.size +"명의 인재가 있습니다!"
+            binding.tvRecommendedTalent.text = "지금 지방에는 "+ members.size +"명의 인재가 있습니다!"
             Log.d("HomeFragment", members.toString())
         }
     }

@@ -36,7 +36,6 @@ class HomeViewModel @Inject constructor(
                     latitude = member.latitude,
                     longitude = member.longitude,
                     pdfUrl = member.pdfUrl,
-                    descriptor = ""
                 ) })
             }.onFailure {
                 _getAllMembersState.value = GetAllMembersState(error = it)

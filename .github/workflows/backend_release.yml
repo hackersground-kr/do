@@ -57,11 +57,7 @@ jobs:
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
-        with:
-          name: node-app
-          path: node-app.zip
-      - run: |
-          zip -r node-app.zip .
+        run: zip -r node-app.zip .
         working-directory: ./do-backend
 
   deploy:

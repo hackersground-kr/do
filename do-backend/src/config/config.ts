@@ -1,5 +1,5 @@
 export const config = {
-  port: 8080,
+  port: 8000,
   DBHost: 'dodo.mysql.database.azure.com',
   DBPort: 3306,
   DBUsername: 'do',

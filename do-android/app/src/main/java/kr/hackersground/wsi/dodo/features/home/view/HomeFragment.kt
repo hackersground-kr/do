@@ -26,11 +26,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     override fun start(savedInstanceState: Bundle?) {
         memberAdapter = MemberAdapter()
+        viewModel.getAllMember()
+
         binding.rvTalent.adapter = memberAdapter
         binding.rvRecommendedTalent.adapter = memberAdapter
+
         collectGetAllMembersState()
-        ChangeMemberRecycleView()
         binding.tvNearTalent.text = "지금 지방에는 "+ members.size +"명의 인재가 있습니다!"
+
         repeatOnStarted {
             viewModel.eventFlow.collect { event -> handleEvent(event) }
         }
@@ -40,20 +43,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         viewModel.getAllMembersState.collect { state ->
             if (state.members.isNotEmpty()) {
                 members = state.members
+                memberAdapter.submitList(members.map {Member(it.name, it.latitude, it.longitude, it.pdfUrl) })
             }
             if (state.error != null) {
                 Toast.makeText(requireContext(), state.error.toString(), Toast.LENGTH_SHORT).show()
             }
             Log.d("HomeFragment", members.toString())
         }
-    }
-
-    private fun ChangeMemberRecycleView() {
-        Log.d("ChangeMemberRecyclerView", members.toString())
-        if (members.isEmpty()) {
-            viewModel.getAllMember()
-        }
-        memberAdapter.submitList(members.map {Member(it.name, it.latitude, it.longitude, it.pdfUrl) })
     }
 
     private fun handleEvent(event: HomeViewModel.Event) = when (event) {

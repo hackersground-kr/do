@@ -49,6 +49,10 @@ object Libraries {
     private val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
     private val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine}"
 
+    // deployment
+    private val appcenterAnalytics = "com.microsoft.appcenter:appcenter-analytics:${Versions.appCenterSdk}"
+    private val appcenterCrashes = "com.microsoft.appcenter:appcenter-crashes:${Versions.appCenterSdk}"
+
     // test
     val junit = "junit:junit:${Versions.junit}"
     private val extJunit = "androidx.test.ext:junit:${Versions.extJunit}"
@@ -97,6 +101,11 @@ object Libraries {
 
     val appLibraries = arrayListOf<String>().apply {
         add(coreKtx)
+    }
+
+    val deploymentLibraries = arrayListOf<String>().apply {
+        add(appcenterAnalytics)
+        add(appcenterCrashes)
     }
 
     val testLibraries = arrayListOf<String>().apply {

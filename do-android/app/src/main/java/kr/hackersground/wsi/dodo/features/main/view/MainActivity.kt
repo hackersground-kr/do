@@ -5,6 +5,9 @@ import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
 import dagger.hilt.android.AndroidEntryPoint
 import kr.hackersground.wsi.dodo.R
 import kr.hackersground.wsi.dodo.base.BaseActivity
@@ -18,6 +21,12 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     private lateinit var navController: NavController
 
     override fun start() {
+        AppCenter.start(
+            application,
+            "e59cdf02-8630-4ebc-8201-4fbb6789e5ba",
+            Analytics::class.java,
+            Crashes::class.java
+        )
         setNavigation()
     }
 

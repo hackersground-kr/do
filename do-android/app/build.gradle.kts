@@ -53,6 +53,8 @@ dependencies {
     implementation(Libraries.hiltAndroid)
     kapt(Libraries.hiltCompiler)
 
+    implementation(Libraries.deploymentLibraries)
+
     testImplementation(Libraries.junit)
     androidTestImplementation(Libraries.testLibraries)
 }
